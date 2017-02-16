@@ -1,0 +1,44 @@
+body {
+	background-color: green;
+	height: 100%;
+	width: 100%;
+	align-content: center;
+	justify-content: center;
+	margin-top: 8%;
+}
+
+#searcher {
+	width: 80%;
+	height: 13%;
+	text-align: center;
+	background-color: #3CFFB3;
+	position: relative;
+	margin-left: 10%;
+	margin-right: 10%;
+	border-radius: 15px;
+	/**/
+	-webkit-box-shadow: 2px 2px 1px 2px rgba(0,0,0,0.75);
+	-moz-box-shadow: 2px 2px 1px 2px rgba(0,0,0,0.75);
+	box-shadow: 2px 2px 1px 2px rgba(0,0,0,0.75);
+	/**/
+}
+
+#ingredient {
+	text-align: center;
+	position: relative;
+	margin: 1em;
+	padding: 1em;
+	width: 90%;
+}
+
+#stockList {
+	
+
+}
+#stockIng {
+	cursor: pointer;
+}
+
+#ingredList {
+	cursor: pointer;
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE>
+<html>
+<head>
+    <title>Inserte nombre aqui (?</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="Style/style.css">
+    <script src="Lib/angular.min.js"></script>
+</head>
+
+<body ng-app="myApp" ng-controller="MainController">
+  	<div id="content">
+  		<div id="searcher">
+
+          <input type="text" placeholder="Ingredientes" id="ingredient" list="ingredList" ng-model="newIngredient" oninput="addIngredient()">
+          <button ng-click="addIngredient()">AGREGAR</button>
+
+        <datalist id="ingredList">
+  				<option>Ajo</option>
+  				<option>Calabacin</option>
+  				<option>Tomates</option>
+  				<option>Zanahoria</option>
+  			</datalist>
+
+  		</div>
+      <div id="stockList">
+           <ul>
+
+              <li ng-repeat="ingredient in ingredients">
+              <span id="stockIng" ng-click="delIngredient($index)">{{ ingredient.text }}</span>
+              </li>
+
+           </ul>
+
+        </div>
+  	</div>
+    <script src="Script/controller.js"></script>
+</body>
+
+</html>
