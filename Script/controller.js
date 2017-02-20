@@ -5,8 +5,9 @@ app.controller('MainController',['$scope', function($scope){
 
 		$scope.addIngredient = function(){
 			if ($scope.newIngredient != null){
-				$scope.ingredients.push({text: $scope.newIngredient});
-				
+				/*if(!$scope.newIngredient.value in $scope.ingredients){*/
+					$scope.ingredients.push({text: $scope.newIngredient});
+			//}
 			};
 			$scope.newIngredient = null;
 		};
@@ -15,4 +16,18 @@ app.controller('MainController',['$scope', function($scope){
 			$scope.ingredients.splice(data, 1);
 		};
 
+		$scope.idIngreds = [];
+		$scope.idIngreds.push({ ingr: "uno12" });
+		$scope.idIngreds.push({ ingr: "dos" });
+		$scope.idIngreds.push({ ingr: "tres" });
+		$scope.idIngreds.push({ ingr: "cuatro" });
+		$scope.idIngreds.push({ ingr: "cinco" });
+		$scope.idIngreds.push({ ingr: "seis" });
+		$scope.idIngreds.push({ ingr: "siete" });
+		$scope.idIngreds.push({ ingr: "el ooooooochooo" });
+/*/
+		for (var i = 0; i < $scope.idIngreds.length; i++) {
+			confirm($scope.idIngreds[i].ingr);
+		}
+/**/
 }]);
