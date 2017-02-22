@@ -4,21 +4,49 @@
     <title>¿Qué cocino?</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" type="text/css" href="Style/style.css">
+    <link rel="stylesheet" href="Style/fontello.css">
     <script src="Lib/angular.min.js"></script>
+
 </head>
 
 <body ng-app="myApp" ng-controller="MainController">
-  	<div id="content">
-  		<div id="searcher">
 
+
+
+
+
+  <header>
+    <div class="container">
+
+      <h1>Que cocino?</h1>
+      <div id="searcher">
+
+        <div class="seeker">
           <input type="text" placeholder="Ingredientes" id="ingredient" list="ingredList" ng-model="newIngredient" ng-change="addIngredientAUX()">
           <button id="addButton" ng-click="addIngredient()" ng-disabled="isDisabled">Agregar!</button>
+        </div>
 
         <datalist id="ingredList" >
             <option ng-repeat ="ingred in idIngreds" value="{{ ingred.ingr }}" ng-selected="selected">
         </datalist>
 
-  		</div>
+      </div>
+
+      <input type="checkbox" id="menu-var" name="" value="">
+      <label class="icon-align-justify-1" for="menu-var"></label>
+      <nav class="menu">
+        <a href="#">Inicio</a>
+        <a href="#">Categorías</a>
+        <a href="#">Favoritos</a>
+        <a href="#">Contacto</a>
+      </nav>
+
+    </div>
+
+  </header>
+
+
+  	<div id="content">
       <div id="stockList">
            <ul>
 
@@ -30,6 +58,42 @@
 
         </div>
   	</div>
+
+
+    <main>
+      <section id="banner">
+
+      </section>
+
+    </br></br></br></br></br>
+    </main>
+
+
+
+
+    <footer>
+      <div class="container">
+        <p class="copy">Que cocino? &copy; 2017</p>
+
+          <div id="buttons">
+
+              <div class="button">
+                <a href="#">CREAR</a>
+              </div>
+              <div class="button">
+                <a href="#">RECETAS</a>
+              </div>
+          </div>
+        <div class="social">
+          <a class="icon-facebook-squared" href="#"></a>
+          <a class="icon-twitter-squared" href="#"></a>
+          <a class="icon-instagram" href="#"></a>
+        </div>
+
+      </div>
+    </footer>
+
+
     <script src="Script/controller.js"></script>
     <script src="https://www.gstatic.com/firebasejs/3.6.9/firebase.js"></script>
 
