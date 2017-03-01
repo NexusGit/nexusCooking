@@ -6,14 +6,9 @@
     <link rel="stylesheet" type="text/css" href="Style/style.css">
     <link rel="stylesheet" href="Style/fontello.css">
     <script src="Lib/angular.min.js"></script>
-
 </head>
 
 <body ng-app="myApp" ng-controller="MainController">
-
-
-
-
 
   <header>
     <div class="container">
@@ -23,7 +18,7 @@
 
         <div class="seeker">
           <input type="text" placeholder="Ingredientes" id="ingredient" list="ingredList" ng-model="newIngredient" ng-change="addIngredientAUX()">
-          <button id="addButton" ng-click="addIngredient()" ng-disabled="isDisabled">Agregar!</button>
+          <button class="icon-plus" id="addButton" ng-click="addIngredient()" ng-disabled="isDisabled"></button>
         </div>
 
         <datalist id="ingredList" >
@@ -45,12 +40,15 @@
 
   </header>
 
+    <div class="image__img">
+
+    </div>
 
   	<div id="content">
       <div id="stockList">
            <ul>
 
-              <li ng-repeat="ingredient in ingredients">
+              <li class="stock__Ing"ng-repeat="ingredient in ingredients">
               <span id="stockIng" ng-click="delIngredient($index)">{{ ingredient.text }}</span>
               </li>
 
@@ -59,38 +57,33 @@
         </div>
   	</div>
 
-
-    <main>
-      <section id="banner">
-
-      </section>
-
-    </br></br></br></br></br>
     </main>
 
 
 
 
-    <footer>
-      <div class="container">
+    <footer id="bottom">
+
+      <div id="buttons">
+
+          <div class="button" id="button__left">
+            <a href="#">CREAR</a>
+          </div>
+          <div class="button" id="button__right">
+            <a href="#">RECETAS</a>
+          </div>
+      </div>
+    </br>
         <p class="copy">Que cocino? &copy; 2017</p>
 
-          <div id="buttons">
 
-              <div class="button">
-                <a href="#">CREAR</a>
-              </div>
-              <div class="button">
-                <a href="#">RECETAS</a>
-              </div>
-          </div>
         <div class="social">
           <a class="icon-facebook-squared" href="#"></a>
           <a class="icon-twitter-squared" href="#"></a>
           <a class="icon-instagram" href="#"></a>
         </div>
 
-      </div>
+
     </footer>
 
 
