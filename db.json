@@ -7,17 +7,15 @@
                 "categories":{
                     "categoryKey1":true,
                     "categoryKey2":true
-                    //...
                 },
                 "ingredients":{
                     "ingredientKey1":true,
                     "ingredientKey2":true
-                    //...
                 },
                 "difficulty":{
                     "0":true
                 },
-                "time":15, //minutes
+                "time":15,
                 "timeType":{
                     "express":true
                 },
@@ -38,17 +36,15 @@
                 "categories":{
                     "categoryKey1":true,
                     "categoryKey3":true
-                    //...
                 },
                 "ingredients":{
                     "ingredientKey4":true,
                     "ingredientKey5":true
-                    //...
                 },
                 "difficulty":{
                     "1":true
                 },
-                "time":100, //minutes
+                "time":100,
                 "timeType":{
                     "long":true
                 },
