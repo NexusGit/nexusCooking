@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+        <div ng-app="module-data" ng-controller="controller-data as cData">
+            <div id="addData">
+                Name: <input type="text" ng-model="cData.name_"></br></br>
+                Steps: <input type="text" ng-model="cData.steps_"></br></br>
+                Time: <input type="text" ng-model="cData.time_"></br></br>
+                Image URL: <input type="text" ng-model="cData.image_"></br></br>
+                Difficulty: 
+                <select ng-model="cData.difficulty_">
+                    <option value="1">Easy</option>
+                    <option value="2">Medium</option>
+                    <option value="3">Hard</option>
+                </select></br></br>
+                Regions: 
+                <select ng-model="cData.regions_">
+                    <option value="argentina">Argentina</option>
+                    <option value="uruguay">Uruguay</option>
+                    <option value="chile">Chile</option>
+                </select></br></br>
+                Time Type: 
+                <select ng-model="cData.timeType_">
+                    <option value="express">Express</option>
+                    <option value="long">Long</option>
+                </select></br></br>
+                Category: 
+                <select ng-model="cData.category_">
+                    <option value="ensaladas">Ensaladas</option>
+                    <option value="asados">Asados</option>
+                    <option value="panificaciones">Panificaciones</option>
+                    <option value="sopas">Sopas</option>
+                </select></br></br>
+                Ingredients: 
+                <select ng-model="cData.ingredient_">
+                    <option ng-repeat="myIngredient in cData.ingredientsList" value="{{myIngredient}}">{{myIngredient}}</option>
+                </select>
+                <input type="button" value="<- ->" ng-click="cData.addIngredients()">
+                Ingredients agregados: 
+                <select ng-model="cData.ingredients_">
+                    <option ng-repeat="myIngredient in cData.ingredientsListAdded" value="{{myIngredient}}">{{myIngredient}}</option>
+                </select></br></br>
+                <input type="button" value="Add new recipe!" ng-click="cData.addRecipe()">
+                <input type="button" value="Ver los ingredientes!" ng-click="cData.getIngredient()">
+            </div>
+            <div ng-app="module-data" ng-controller="controller-ingredients as cIngredients">
+                <hr>
+                <hr>
+                Crear nuevo ingrediente:
+                <input type="text" ng-model="cIngredients.name_">
+                <input type="button" value="Add new ingredient!" ng-click="cIngredients.addIngredient()">
+            </div>
+        </div>
+        <script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
+        <script src="db-connection.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
+        <script src="module-data.js"></script>
+    </body>
+</html>
