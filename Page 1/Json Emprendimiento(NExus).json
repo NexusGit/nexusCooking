@@ -1,0 +1,53 @@
+
+{"Nexus":
+    [
+        {"recipes":
+            [
+                {"id[1]":
+                    [
+                        {"name":"Sopa Paraguaya"},
+                        {"category":"Paraguaya"},
+                        {"Image":""},
+                        {"dificulty":""},
+                        {"time":""},
+                        {"preparation":""},
+                        {"ingredients":
+                            [
+                                {"namIng":"agua","Cantidad":"500ml"}
+                            ]
+                        }
+                                    
+                            
+                    ]
+                },           
+            
+
+            
+                {"id[2]":
+                    [
+                        {"name":""},
+                        {"category":""},
+                        {"Image":""},
+                        {"dificulty":""},
+                        {"time":""},
+                        {"preparation":""},
+                        {"ingredients":
+                            [
+                                {"namIng":"","Cantidad":""}
+                            ]
+                        }
+                                    
+                            
+                    ]
+                },
+            ]
+        },
+        {"Ingredients":
+            [   
+                {"5":"tomate"}
+            ]
+        }
+    ]
+}
+        
+ 
