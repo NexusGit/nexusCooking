@@ -10,15 +10,34 @@ angular
         cData.time_=0;
         cData.timeType_="";
         cData.category_="";
-        cData.ingredientsList = [];
-        cData.ingredientsListAdded = [];
+        cData.ingredientsList = new Object();
+        cData.ingredientsListAdded = new Object();
 
-        cData.addIngredients = function(){
-            var data = cData.ingredient_;
-            cData.ingredientsListAdded.push(data);
-            cData.ingredientsList.splice(cData.ingredientsList.indexOf(data), 1);
+        // Ver los ingredientes que existen en la DB
+        db.ref('db/ingredients/').orderByChild('name').once('value', function(snapshot){
+            for (myIngredient in snapshot.val()){
+                db.ref('db/ingredients/' + myIngredient + '/').once('value', function(snapshot){
+                    cData.ingredientsList[snapshot.key] = snapshot.val().name;
+                })
+            }
+        })
+
+        // Agrega un ingrediente seleccionado del select al arreglo
+        cData.addIngredient = function(){
+            cData.ingredientsListAdded[cData.ingredient_] = {
+                name:cData.ingredientsList[cData.ingredient_],
+                amount:cData.amount,
+                unit:cData.unit
+            }
+            console.log(cData.ingredientsListAdded);
         }
 
+        // Quita un ingrediente de la lista de ingredientes añadidos
+        cData.removeIngredient = function(){
+            delete cData.ingredientsListAdded[cData.ingredientToRemove];
+        }
+
+        // Muestra por consola las recetas
         cData.getRecipe = function(){
             db.ref('db/recipes/').once('value', function(snapshot){
                 for (myRecipe in snapshot.val()){
@@ -29,8 +48,9 @@ angular
             })
         }
 
+        // Carga en la lista los ingredientes de la DB
         cData.getIngredient = function(){
-            db.ref('db/ingredients/').once('value', function(snapshot){
+            db.ref('db/ingredients/').orderByValue('name').once('value', function(snapshot){
                 for (myIngredient in snapshot.val()){
                     db.ref('db/ingredients/' + myIngredient + '/').once('value', function(snapshot){
                         cData.ingredientsList.push(snapshot.val().name);
@@ -39,11 +59,7 @@ angular
             })
         }
 
-// Falta ingredients
-// date: Firebase.ServerValue.TIMESTAMP
-// ref.orderByChild('date').on('child_added', function(snapshot) {});
-// gramos, mililitros, cucharada(s), taza(s), pizca(s)
-
+        // Agrega una nueva receta segun lo ingresado en la vista
         cData.addRecipe = function(){
             var newRecipe = {
                 author:{
@@ -51,10 +67,8 @@ angular
                 },
                 favorites:0,
                 image:cData.image_,
-                ingredients:{},//loop in array from front
                 name:cData.name_,
                 stars:0,
-                steps:cData.steps_,
                 time:cData.time_,
                 votes:0,
                 difficulty:{
@@ -78,29 +92,21 @@ angular
             db.ref('db/regions/' + cData.regions_ + '/recipes').update({[newRecipeKey]:true})
             db.ref('db/timeTypes/' + cData.timeType_ + '/recipes').update({[newRecipeKey]:true})
             db.ref('db/categories/' + cData.category_ + '/recipes').update({[newRecipeKey]:true})
-/*
-            // Difficulties
-            db.ref('db/recipes/' + newRecipeKey + '/difficulty/' + cData.difficulty_ + '/').update({isValue:true})
-            db.ref('db/difficulties/' + cData.difficulty_ + '/recipes/' + newRecipeKey).update({isValue:true})
-            // Regions
-            db.ref('db/recipes/' + newRecipeKey + '/region/' + cData.regions_ + '/').update({isValue:true})
-            db.ref('db/regions/' + cData.regions_ + '/recipes/' + newRecipeKey).update({isValue:true})
-            // TimeTypes
-            db.ref('db/recipes/' + newRecipeKey + '/timeType/' + cData.timeType_ + '/').update({isValue:true})
-            db.ref('db/timeTypes/' + cData.timeType_ + '/recipes/' + newRecipeKey).update({isValue:true})
-            // Categories
-            db.ref('db/recipes/' + newRecipeKey + '/category/' + cData.category_ + '/').update({isValue:true})
-            db.ref('db/categories/' + cData.category_ + '/recipes/' + newRecipeKey).update({isValue:true})
-*/
-
-/*
+            var stepsArray = cData.steps_.split("\n");
+            for (var i = 1; i <= stepsArray.length; i++){
+                db.ref('db/recipes/' + newRecipeKey + '/steps').update({[i]:stepsArray[i - 1]});
+            }
+            db.ref('db/recipes/' + newRecipeKey + '/ingredients/').update(cData.ingredientsListAdded);
+            for (ingredient in cData.ingredientsListAdded){
+                db.ref('db/ingredients/' + ingredient + '/recipes').update({[newRecipeKey]:true});
+            }
+            return true
                 .then(function(){
                     alert("Se cargo con exito la receta.");
                 })
                 .catch(function(e){
                     alert("Error en la carga de datos: " + e);
                 });
-*/
         }
     })
     .controller("controller-ingredients", function(){
