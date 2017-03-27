@@ -88,6 +88,7 @@ angular
             var newRecipeKey = db.ref('db/').child('recipes').push().key;
             db.ref('db/recipes/' + newRecipeKey).update(newRecipe);
 
+            db.ref('db/names/' + cData.name_ + '/recipes').update({[newRecipeKey]:true})
             db.ref('db/difficulties/' + cData.difficulty_ + '/recipes').update({[newRecipeKey]:true})
             db.ref('db/regions/' + cData.regions_ + '/recipes').update({[newRecipeKey]:true})
             db.ref('db/timeTypes/' + cData.timeType_ + '/recipes').update({[newRecipeKey]:true})
