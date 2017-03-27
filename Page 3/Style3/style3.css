@@ -230,6 +230,12 @@ input[type=number]::-webkit-outer-spin-button {
   transform: rotateY(180deg);
 }
 
+.position__li {
+  position: relative;
+  bottom: 50px;
+  left: 30px;
+}
+
 .preparation p {
   margin: auto;
   margin-left: 30px;
@@ -292,4 +298,8 @@ input[type=number]::-webkit-outer-spin-button {
   position: relative;
   bottom: 50px;
   left: 30px;
+}
+
+.title__recipes p {
+  width: 40%;
 }
