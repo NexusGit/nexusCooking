@@ -32,34 +32,34 @@
     <div class="container__recipes" ng-app="module-interface3" ng-controller="controller-interface3 as cInterface3">
       <section>
         <div class="title__recipes">
-          <h2>{__{cInterface3.name_}}</h2>
+          <h2>{{cInterface3.currentRecipe.name}}</h2>
           <br>
-          <p>....................o</p>
         </div>
         <div class="ingredient__images">
-          <img src="{{cInterface3.image_}}" alt="">
+          <img src="" alt="poner la imagen en el src {{cInterface3.image_}}">
         </div>
       </section>
       <section>
         <div class="ingredient__recipes">
           <h2>Ingredientes</h2>
-                Category:</br> 
-                <select ng-model="cData.category_">
-                    <option value="asados">Asados</option>
-                    <option value="ensaladas">Ensaladas</option>
-                    <option value="panificaciones">Panificaciones</option>
-                    <option value="sopas">Sopas</option>
-                </select></br></br>
+          Category:</br> 
+          <select ng-model="fix">
+              <option value="s">Fix!</option>
+          </select></br></br>
           <ul>
             <br>
-            <div class="container__circle">
-              <div class="circle">
-                <div class="ingredient__circle side"> {{$index - 1}}
-                </div>
-                <div class="ingredient__circle2 side"> {{$index - 1}}
+            <div ng-repeat="(key, value) in cInterface3.ingredientsList">
+              <div class="container__circle">
+                <div class="circle">
+                  <div class="ingredient__circle side"> {{value.amount}}
+                  </div>
+                  <div class="ingredient__circle2 side"> {{value.amount}}
+                  </div>
                 </div>
               </div>
-              <li ng-repeat="(key, value) in cInterface3.ingredientsList" class="ingredient__li position__li"> {{value.amount}} {{value.unit}} de {{value.name}}</li>
+              <div>
+                <li class="ingredient__li position__li">{{value.unit}} de {{value.name}}</li>
+              </div>
             </div>
           </ul>
           <br>
@@ -72,11 +72,19 @@
         <div class="preparation">
           <h2>Preparacion</h2>
           <br>
-          <div class="container__circle"><div class="circle"><div class="ingredient__circle side">1</div><div class="ingredient__circle2 side">1</div></div></div><p class="position__p">Lavar y limpiar las verduras, teniendo cuidado de eliminar los filamentos leñosos del apio. Rallar cada verdura en juliana.</p>
-          <div class="container__circle"><div class="circle"><div class="ingredient__circle side">2</div><div class="ingredient__circle2 side">2</div></div></div><p class="position__p">Poner las verduras en juliana en un bol, añadir sal y pimienta, espolvorear con nuez moscada. Dejar reposar unos minutos.</p>
-          <div class="container__circle"><div class="circle"><div class="ingredient__circle side">3</div><div class="ingredient__circle2 side">3</div></div></div><p class="position__p">Agregar el pan rallado y mezclar bien. Añadir la harina de garbanzo, regulando para obtener una pasta de consistencia blanda, como la de un crepe.</p>
-          <div class="container__circle"><div class="circle"><div class="ingredient__circle side">4</div><div class="ingredient__circle2 side">4</div></div></div><p class="position__p">Calentar un poco de aceite en una sartén, y cuando esté caliente echar la masa por cucharadas. Aplastar ligeramente cada buñuelo con el dorso de una cuchara.</p>
-          <div class="container__circle"><div class="circle"><div class="ingredient__circle side">5</div><div class="ingredient__circle2 side">5</div></div></div><p class="position__p">Dorar por ambos lados, y después escurrir el exceso de aceite colocando los buñuelos sobre toallas de papel. Espolvorear con más sal si fuera necesario.</p>
+          <div ng-repeat="(key, value) in cInterface3.stepsList">
+            <div class="container__circle">
+              <div class="circle">
+                <div class="ingredient__circle side">{{key}}
+                </div>
+                <div class="ingredient__circle2 side">{{key}}
+                </div>
+              </div>
+            </div>
+            <div>
+              <p class="position__p">{{value}}</p>
+            </div>
+          </div>
         </div>
       </div>
       </section>
