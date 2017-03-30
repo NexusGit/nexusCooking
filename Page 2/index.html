@@ -5,15 +5,16 @@
     <title></title>
     <link rel="stylesheet" href="Style2/style2.css">
     <link rel="stylesheet" href="Style2/fontello.css">
+    <script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
+    <script src="../Public/db-connection.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
+    <script src="../Script/module-interface2.js"></script>  
   </head>
   <body>
-
     <header>
       <div class="container">
-
         <button class="icon-left-big" id="arrow" type="button" name="button" onclick="location.href='file:///C:/Users/Fernando%20M.%20de%20Lima/Documents/GitHub/nexusCooking/index.html'"></button>
         <h1>Que cocino?</h1>
-
         <input type="checkbox" id="menu-var2" name="" value="">
         <label class="icon-align-justify-1" for="menu-var2"></label>
         <nav class="menu">
@@ -22,51 +23,20 @@
           <a href="#">Favoritos</a>
           <a href="#">Contacto</a>
         </nav>
-
       </div>
-
     </header>
-
-      <div class="container__food">
-
+    <div ng-app="module-interface2" ng-controller="controller-interface2 as cInterface2">
+      </br></br></br>Category:
+      <select ng-model="fix">
+          <option value="s">Fix!</option>
+          <option value="s">Fiasdx!</option>
+      </select></br></br>
+      <div class="container__food" ng-repeat="recipe in cInterface2.allRecipes">
         <div class="food__column">
-          <img src="Image/burger-500054_1920.jpg" alt="">
-          <p class="name__food">Hamburguesas de Tocino</p>
+          <img src="{{recipe.image}}" alt="{{recipe.image}}">
+          <p class="name__food">{{recipe.name}}</p>
         </div>
-        <div class="food__column">
-          <img src="Image/burger-500054_1920.jpg" alt="">
-          <p class="name__food">Hamburguesas de Tocino</p>
-        </div>
-        <div class="food__column">
-          <img src="Image/burger-500054_1920.jpg" alt="">
-          <p class="name__food">Hamburguesas de Tocino</p>
-        </div>
-        <div class="food__column">
-          <img src="Image/burger-500054_1920.jpg" alt="">
-          <p class="name__food">Hamburguesas de Tocino</p>
-        </div>
-        <div class="food__column">
-          <img src="Image/burger-500054_1920.jpg" alt="">
-          <p class="name__food">Hamburguesas de Tocino</p>
-        </div>
-        <div class="food__column">
-          <img src="Image/burger-500054_1920.jpg" alt="">
-          <p class="name__food">Hamburguesas de Tocino</p>
-        </div>
-        <div class="food__column">
-          <img src="Image/burger-500054_1920.jpg" alt="">
-          <p class="name__food">Hamburguesas de Tocino</p>
-        </div>
-        <div class="food__column">
-          <img src="Image/burger-500054_1920.jpg" alt="">
-          <p class="name__food">Hamburguesas de Tocino</p>
-        </div>
-        <div class="food__column">
-          <img src="Image/burger-500054_1920.jpg" alt="">
-          <p class="name__food">Hamburguesas de Tocino</p>
-        </div>
-
       </div>
-
+    </div>
   </body>
 </html>
