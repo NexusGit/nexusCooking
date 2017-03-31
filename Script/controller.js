@@ -1,9 +1,6 @@
-var app = angular.module("myApp", []);
-app.controller('MainController',['$scope', function($scope){
-
-
+angular.module("myApp", [])
+	.controller('MainController',['$scope', function($scope){
 		$scope.ingredients = [];
-
 		$scope.idIngreds = [];
 		$scope.idIngreds.push({ ingr: "uno12" });
 		$scope.idIngreds.push({ ingr: "dos" });

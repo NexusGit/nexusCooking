@@ -38,4 +38,13 @@ angular
         cInterface1.removeIngredient = function(removeKey){
             delete cInterface1.ingredientsAdded[removeKey]
         }
+
+        // Almacena en localStorage la busqueda
+        cInterface1.filterData = function(){
+                localStorage.setItem("myData", cInterface1.ingredientsAdded)
+//            for (ingredient in cInterface1.ingredientsAdded){
+//                localStorage.filteredData[ingredient] = cInterface1.ingredientsAdded[ingredient];
+//            }
+            console.log(localStorage.myData);
+        }
     })
