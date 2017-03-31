@@ -29,7 +29,6 @@ angular
                 amount:cData.amount,
                 unit:cData.unit
             }
-            console.log(cData.ingredientsListAdded);
         }
 
         // Quita un ingrediente de la lista de ingredientes añadidos
@@ -37,10 +36,10 @@ angular
             delete cData.ingredientsListAdded[cData.ingredientToRemove];
         }
 
-        // Muestra por consola las recetas
+        // Muestra por consola las recetas TESTING
         cData.getRecipe = function(){
             db.ref('db/recipes/').once('value', function(snapshot){
-                for (myRecipe in snapshot.val()){
+                for (var myRecipe in snapshot.val()){
                     db.ref('db/recipes/' + myRecipe + '/').once('value', function(snapshot){
                         console.log(snapshot.val());
                     })
@@ -52,7 +51,7 @@ angular
         cData.getIngredient = function(){
             db.ref('db/ingredients/').orderByValue('name').once('value', function(snapshot){
                 for (myIngredient in snapshot.val()){
-                    db.ref('db/ingredients/' + myIngredient + '/').once('value', function(snapshot){
+                    db.ref('db/ingredients/' + myIngredient + '/').orderByValue('name').once('value', function(snapshot){
                         cData.ingredientsList.push(snapshot.val().name);
                     })
                 }
@@ -66,7 +65,7 @@ angular
                     admin:true
                 },
                 favorites:0,
-                image:cData.image_,
+                image:localStorage.getItem('currentURLimg'),
                 name:cData.name_,
                 stars:0,
                 time:cData.time_,
@@ -84,7 +83,6 @@ angular
                     [cData.timeType_]:true
                 }
             };
-
             var newRecipeKey = db.ref('db/').child('recipes').push().key;
             db.ref('db/recipes/' + newRecipeKey).update(newRecipe);
 
@@ -102,12 +100,6 @@ angular
                 db.ref('db/ingredients/' + ingredient + '/recipes').update({[newRecipeKey]:true});
             }
             return true
-                .then(function(){
-                    alert("Se cargo con exito la receta.");
-                })
-                .catch(function(e){
-                    alert("Error en la carga de datos: " + e);
-                });
         }
     })
     .controller("controller-ingredients", function(){

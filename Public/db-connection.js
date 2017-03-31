@@ -8,3 +8,4 @@ var config = {
 
 firebase.initializeApp(config);
 var db = firebase.database();
+var storageRef = firebase.storage().ref();

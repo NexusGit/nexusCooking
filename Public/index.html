@@ -4,14 +4,16 @@
         <script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
         <script src="db-connection.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
-        <script src="module-data.js"></script>    </head>
+        <script src="module-data.js"></script>
+    </head>
     <body>
         <div ng-app="module-data" ng-controller="controller-data as cData">
             <div id="addData">
                 Name:</br><input type="text" ng-model="cData.name_"></br></br>
                 Steps:</br><textarea rows="8" cols="40" ng-model="cData.steps_"></textarea></br></br>
                 Time:</br><input type="number" ng-model="cData.time_"></br></br>
-                Image URL:</br><input type="text" ng-model="cData.image_"></br></br>
+                Image URL:</br><input type="file" id="file" name="file"></br></br>
+                <script src="upload-image.js"></script>
                 Difficulty:</br>
                 <select ng-model="cData.difficulty_">
                     <option value="1">Easy</option>
