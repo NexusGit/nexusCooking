@@ -81,7 +81,8 @@ angular
                 },
                 timeType:{
                     [cData.timeType_]:true
-                }
+                },
+                forHowMany:cData.forHowMany
             };
             var newRecipeKey = db.ref('db/').child('recipes').push().key;
             db.ref('db/recipes/' + newRecipeKey).update(newRecipe);
