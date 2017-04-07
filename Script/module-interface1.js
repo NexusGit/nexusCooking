@@ -1,7 +1,10 @@
 angular
-    .module("module-interface1", [])
-    .controller("controller-interface1", function(){
+    .module("module-interface1", ['firebase'])
+    .controller("controller-interface1", function($firebaseObject){
         var cInterface1 = this;
+        const rootRef = firebase.database().ref().child('db');
+        const ref = rootRef.child('recipes');
+        cInterface1.object = $firebaseObject(ref);
         cInterface1.ingredientsList = new Object();
         cInterface1.ingredientsAdded = new Object();
         cInterface1.isDisabled = true;

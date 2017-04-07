@@ -1,7 +1,10 @@
 angular
-    .module("module-interface3", [])
-    .controller("controller-interface3", function(){
+    .module("module-interface3", ['firebase'])
+    .controller("controller-interface3", function($firebaseObject){
         var cInterface3 = this;
+        const rootRef = firebase.database().ref().child('db');
+        const ref = rootRef.child('recipes');
+        cInterface3.object = $firebaseObject(ref);
         cInterface3.currentRecipe = new Object();
         cInterface3.ingredientsList = new Object();
         cInterface3.stepsList = new Object();
@@ -27,6 +30,20 @@ angular
                 cInterface3.stepsList[myStep] = cInterface3.currentRecipe.steps[myStep];
             }
         })
+
+        cInterface3.setRecipes = function(snapshot){
+            cInterface3.currentRecipe = snapshot.val();
+            for(myStep in cInterface3.currentRecipe.steps){
+                cInterface3.stepsList[myStep] = cInterface3.currentRecipe.steps[myStep];
+            }
+            return true
+        }
+
+        cInterface3.getRecipe = function(){
+            return db.ref('db/recipes/' + localStorage.getItem("selectedRecipe")).once('value').then(cInterface3.setRecipes);
+        }
+
+        cInterface3.getRecipe();
 
         // Less amount
         cInterface3.lessAmount = function(){
