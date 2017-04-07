@@ -8,6 +8,7 @@
     <script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
     <script src="../Public/db-connection.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
     <script src="../Script/module-interface2.js"></script>  
     <script src="../Lib/underscore.js"></script>
   </head>
@@ -28,9 +29,10 @@
     </header>
     <div ng-app="module-interface2" ng-controller="controller-interface2 as cInterface2">
       </br></br></br>Category:
-      <select ng-model="fix">
+      <select ng-model="cInterface2.fix">
           <option value="s">Fix!</option>
       </select></br></br>
+      <input type="text" ng-model="cInterface2.asd" value="Test it!" ng-click="cInterface2.testApp()">
       <div class="container__food" ng-repeat="recipe in cInterface2.allRecipes">
         <div class="food__column" data-ng-mouseup="cInterface2.selectRecipe($index)">
           <a href="../Page 3/index.html">
