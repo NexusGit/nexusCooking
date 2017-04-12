@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="res/css/style2.css">
+    <link rel="stylesheet" href="res/css/fontello2.css">
+    <script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
+    <script src="res/js/db-connection.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+    <script src="res/js/module-interface2.js"></script>  
+    <script src="lib/underscore.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <button class="icon-left-big" id="arrow" type="button" name="button" onclick="location.href='index.html'"></button>
+        <h1>Que cocino?</h1>
+        <input type="checkbox" id="menu-var2" name="" value="">
+        <label class="icon-align-justify-1" for="menu-var2"></label>
+        <nav class="menu">
+          <a href="#">Inicio</a>
+          <a href="#">Categorías</a>
+          <a href="#">Favoritos</a>
+          <a href="#">Contacto</a>
+        </nav>
+      </div>
+    </header>
+    <div ng-app="module-interface2" ng-controller="controller-interface2 as cInterface2">
+      <div class="container__food" ng-repeat="recipe in cInterface2.allRecipes">
+        <div class="food__column" data-ng-mouseup="cInterface2.selectRecipe($index)">
+          <a href="recipe.html">
+            <img src="{{recipe.image}}" alt="{{recipe.image}}">
+            <p class="name__food">{{recipe.name}}</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
