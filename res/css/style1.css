@@ -23,13 +23,16 @@ h1	{
 
 header {
   width: 100%;
-  height: 80px;
+  height: 70px;
   background: #43A047;
   color: #fff;
   position: fixed;
   top: 0;
   left: 0;
+}
 
+header a {
+	text-decoration: none;
 }
 
 .container {
@@ -51,7 +54,6 @@ header {
   background: rgba(0, 0, 0, 0.7);
   border-radius: 7px;
   border: 3px solid #fff;
-	justify-content: center;
 }
 
 #ingredient {
@@ -59,7 +61,7 @@ header {
 }
 
 .seeker input:hover {
-  background: #B71C1C;
+  background: rgba(14, 20, 14, 0.83);
 }
 
 #addButton {
@@ -73,15 +75,12 @@ header {
 	cursor: pointer;
 	top: -34px;
 	left: 89%;
-	background: rgba(0, 0, 0, 0.7);
 	color: #fff;
 	border: none;
 	border-radius: 7px;
+	background: none;
 }
 
-#addButton:hover {
-	background: #B71C1C;
-}
 
 .button {
 	width: 100%;
@@ -143,14 +142,14 @@ header {
 }
 
 #stockIng {
-	justify-content: center;
 	border-bottom: 2px solid rgba(183, 28, 28, 0.4);
 	font-size: 22px;
 	width: 100%;
 	text-align: center;
 	display: flex;
+	justify-content: center;
 	margin: auto;
-	padding: 7px;
+	padding: 4px;
 	cursor: pointer;
 }
 
@@ -158,14 +157,19 @@ header {
 	cursor: pointer;
 }
 
+
+
 #content {
-	background: rgba(255, 255, 255, 0.6);
+	background: rgba(14, 20, 14, 0.83);
+	color: #fff;
 	border-radius: 4px;
 	width: 96%;
 	margin: auto;
-	margin-top: 130px;
+	position: relative;
+	top: 140px;
 	list-style-type: none;
-	max-height: 300px;
+	max-height: 50%;
+	max-height: 50vh;
 	overflow-x: hidden;
 }
 
@@ -193,48 +197,41 @@ header {
 	}
 
 	.seeker input {
-	  display: flex;
-	  width: 43%;
-	  margin: 50px;
-	  position: absolute;
+	  width: 70%;
+		height: 40px;
+	  margin: auto;
 	  margin-top: 20px;
 	  padding-top: 10px;
 	  padding: 7px;
-	  background: #43A047;
+	 	background: rgba(0, 0, 0, 0.7);
 	  border-radius: 7px;
 	  border: 3px solid #fff;
-		margin-top: -40px;
+		display: flex;
 		justify-content: center;
-	  flex-wrap: wrap;
 	}
 
 	.seeker input:hover {
-		background: rgba(129, 199, 132, 0.7);
+		background: rgba(14, 20, 14, 0.83);
 	}
 
 	#ingredient {
-		color: #000;
+		color: #fff;
 	}
 
 	#addButton {
-		position: relative;
-		display: inline-block;
 		width: 27px;
 		height: 27px;
-		-webkit-background-size: cover;
-		-moz-background-size: cover;
-		-o-background-size: cover;
+		position: relative;
+		display: inline-block;
 		cursor: pointer;
-		top: -39px;
-		left: 75%;
-		background: #43A047;
+		top: -36px;
+		left: 80%;
 		color: #fff;
 		border: none;
 		border-radius: 7px;
-	}
-
-	#addButton:hover {
-		background: rgba(129, 199, 132, 0.7);
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
 	}
 
 	.copy {
@@ -248,105 +245,14 @@ header {
 	}
 
 	#content {
-		background: rgba(255, 255, 255, 0.6);
 		border-radius: 4px;
 		width: 50%;
-		height: 100%;
 		margin: auto;
-		margin-top: 80px;
+		position: relative;
+		top: 140px;
 		list-style-type: none;
-		max-height: 40%;
+		max-height: 50%;
+		max-height: 50vh;
 		overflow-x: hidden;
 	}
 }
-/*
-.seeker {
-  width: 90%;
-  max-width: 60%;
-  margin: auto;
-*/
-/*
-.seeker input {
-  display: flex;
-  width: 43%;
-  margin: 50px;
-  position: absolute;
-  margin-top: 20px;
-  padding-top: 10px;
-  padding: 7px;
-  background: #51f28b;
-  border-radius: 7px;
-  border: 3px solid #fff;
-	margin-top: -40px;
-	justify-content: center;
-  flex-wrap: wrap;
-}
-*/
-/*
-#addButton {
-	position: relative;
-	display: inline-block;
-	width: 27px;
-	height: 27px;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	cursor: pointer;
-	top: -36px;
-	left: 75%;
-	background: #51f28b;
-	color: #fff;
-	border: none;
-	border-radius: 7px;
-	*/
-/*
-h1	{
-	margin-top: 30px;
-
-}
-*/
-/*
-.copy {
-font-size: 20px;
-}
-/*
-.social {
-  width: 100%;
-  text-align: center;
-  font-size: 28px;
-	padding: 5px;
-}
-*/
-/*
-#content {
-width: 50%;
-margin: auto;
-margin-top: 80px;
-list-style-type: none;
-max-height: 60%;
-overflow-x: hidden;
-}
-*/
-/*
-#content {
-	background: rgba(255, 255, 255, 0.6);
-	border-radius: 4px;
-	width: 100%;
-	margin: auto;
-	margin-top: 80px;
-	list-style-type: none;
-	max-height: 50%;
-	overflow-x: hidden;
-	*/
-/*
-	#stockIng {
-		justify-content: center;
-		border-bottom: 2px solid rgba(0, 0, 0, 0.4);
-		font-size: 25px;
-		width: 50%;
-		text-align: center;
-		display: flex;
-		margin: auto;
-		padding: 7px;
-		cursor: pointer;
-*/
