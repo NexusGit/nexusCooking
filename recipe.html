@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="module-interface3" ng-controller="controller-interface3 as cInterface3">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>{{cInterface3.currentRecipe.name}}</title>
     <link rel="stylesheet" href="res/css/style3.css">
     <link rel="stylesheet" href="res/css/fontello3.css">
     <script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
@@ -30,7 +30,7 @@
     <br>
     <br>
     <br>
-    <div class="container__recipes" ng-app="module-interface3" ng-controller="controller-interface3 as cInterface3">
+    <div class="container__recipes">
       <section>
         <div class="title__recipes">
           <h2>{{cInterface3.currentRecipe.name}}</h2>

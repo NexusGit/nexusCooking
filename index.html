@@ -35,16 +35,17 @@
         </nav>
       </div>
     </header>
+    <main>
       <div class="image__img">
       </div>
     	<div id="content">
         <div id="stockList">
-             <ul>
-                <li class="stock__Ing" ng-repeat="(key, value) in cInterface1.ingredientsAdded">
-                  <span id="stockIng" ng-click="cInterface1.removeIngredient(key)">{{ value }}</span>
-                </li>
-             </ul>
-          </div>
+            <ul>
+              <li class="stock__Ing" ng-repeat="(key, value) in cInterface1.ingredientsAdded">
+                <span id="stockIng" ng-click="cInterface1.removeIngredient(key)">{{ value }}</span>
+              </li>
+            </ul>
+      </div>
     	</div>
       </main>
       <footer id="bottom">

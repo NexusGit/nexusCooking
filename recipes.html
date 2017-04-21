@@ -15,7 +15,7 @@
   <body>
     <header>
       <div class="container">
-        <button class="icon-left-big" id="arrow" type="button" name="button" onclick="location.href='index.html'"></button>
+        <button class="icon-left-big" id="arrow" type="button" name="button" ng-click="location.href='index.html'"></button>
         <h1>Que cocino?</h1>
         <input type="checkbox" id="menu-var2" name="" value="">
         <label class="icon-align-justify-1" for="menu-var2"></label>
@@ -27,15 +27,19 @@
         </nav>
       </div>
     </header>
-    <div ng-app="module-interface2" ng-controller="controller-interface2 as cInterface2">
+    <div ng-app="module-interface2" ng-controller="controller-interface2 as cInterface2" ng-init="myUrl = ''">
+      <ul>
       <div class="container__food" ng-repeat="recipe in cInterface2.allRecipes">
-        <div class="food__column" data-ng-mouseup="cInterface2.selectRecipe($index)">
-          <a href="recipe.html">
-            <img src="{{recipe.image}}" alt="{{recipe.image}}">
-            <p class="name__food">{{recipe.name}}</p>
-          </a>
+        <div class="food__column" ng-mouseup="myUrl = cInterface2.goHashtag($index)">
+          <li>
+            <a href="{{myUrl}}">
+              <img src="{{recipe.image}}" alt="{{recipe.image}}">
+              <p class="name__food">{{recipe.name}}</p>
+            </a>
+          </li>
         </div>
       </div>
+      </ul>
     </div>
   </body>
 </html>
