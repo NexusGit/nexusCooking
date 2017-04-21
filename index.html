@@ -2,9 +2,11 @@
 <html>
   <head>
       <title>¿Qué cocino?</title>
-      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link rel="stylesheet" type="text/css" href="res/css/style1.css">
       <link rel="stylesheet" href="res/css/fontello1.css">
+      <link rel="stylesheet" href="res/css/font-awesome.min.css">
       <script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
       <script src="res/js/db-connection.js"></script>
       <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
@@ -15,18 +17,20 @@
   <body ng-app="module-interface1" ng-controller="controller-interface1 as cInterface1">
     <header>
       <div class="container">
-        <h1>Que cocino?</h1>
+        <a href="#">
+          <h1>Que cocino?</h1>
+        </a>
         <div id="searcher">
           <div class="seeker">
             <input type="text" placeholder="Ingredientes" id="ingredient" list="ingredList" ng-model="cInterface1.newIngredient" ng-change="cInterface1.checkExistance()">
-            <button class="icon-plus" id="addButton" ng-click="cInterface1.addIngredient()" ng-disabled="cInterface1.isDisabled"></button>
+            <button id="addButton" ng-click="cInterface1.addIngredient()" ng-disabled="cInterface1.isDisabled"><i class="fa fa-search" aria-hidden="true"></i></button>
           </div>
           <datalist id="ingredList">
               <option ng-repeat ="(key, value) in cInterface1.ingredientsList" value="{{value}}" ng-selected="selected"></option>
           </datalist>
         </div>
         <input type="checkbox" id="menu-var" name="" value="">
-        <label class="icon-align-justify-1" for="menu-var"></label>
+        <label class="bars" for="menu-var"><i class="fa fa-bars" aria-hidden="true"></i></label>
         <nav class="menu">
           <a href="#">Inicio</a>
           <a href="#">Categorías</a>
@@ -38,15 +42,15 @@
     <main>
       <div class="image__img">
       </div>
-    	<div id="content">
-        <div id="stockList">
+        <div id="content">
+          <div id="stockList">
             <ul>
               <li class="stock__Ing" ng-repeat="(key, value) in cInterface1.ingredientsAdded">
                 <span id="stockIng" ng-click="cInterface1.removeIngredient(key)">{{ value }}</span>
               </li>
             </ul>
-      </div>
-    	</div>
+          </div>
+        </div>
       </main>
       <footer id="bottom">
         <div id="buttons">
@@ -60,9 +64,9 @@
       </br>
         <p class="copy">Que cocino? &copy; 2017</p>
         <div class="social">
-          <a class="icon-facebook-squared" href="#"></a>
-          <a class="icon-twitter-squared" href="#"></a>
-          <a class="icon-instagram" href="#"></a>
+          <a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+          <a href="#"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+          <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
         </div>
       </footer>
   </body>
