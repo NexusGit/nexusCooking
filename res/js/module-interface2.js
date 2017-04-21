@@ -46,7 +46,10 @@ angular
 
         // Envia al localStorage la receta seleccionada
         cInterface2.selectRecipe = function(index){
-            localStorage.setItem("selectedRecipe", Object.keys(cInterface2.allRecipes)[index])
+        }
+
+        cInterface2.goHashtag = function(index){
+            return 'recipe.html' + '#' + Object.keys(cInterface2.allRecipes)[index];
         }
 
         if (_.isEmpty(JSON.parse(localStorage.getItem("myData")))){
