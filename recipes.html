@@ -29,10 +29,10 @@
         </nav>
       </div>
     </header>
-    <div ng-app="module-interface2" ng-controller="controller-interface2 as cInterface2" ng-init="myUrl = ''">
+    <div ng-app="module-interface2" ng-controller="controller-interface2 as cInterface2" ng-init="myUrl = 'recipe.html'">
       <ul>
       <div class="container__food" ng-repeat="recipe in cInterface2.allRecipes">
-        <div class="food__column" ng-mouseup="myUrl = cInterface2.goHashtag($index)">
+        <div class="food__column" ng-mousedown="myUrl = cInterface2.goHashtag($index)">
           <li>
             <a href="{{myUrl}}">
               <img src="{{recipe.image}}" alt="{{recipe.image}}">
