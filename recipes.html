@@ -17,10 +17,9 @@
   <body>
     <header>
       <div class="container">
-        <button class="icon-left-big" id="arrow" type="button" name="button" ng-click="location.href='index.html'"></button>
         <h1>Que cocino?</h1>
         <input type="checkbox" id="menu-var2" name="" value="">
-        <label class="icon-align-justify-1" for="menu-var2"></label>
+        <label class="bars" for="menu-var2"><i class="fa fa-bars" aria-hidden="true"></i></label>
         <nav class="menu">
           <a href="#">Inicio</a>
           <a href="#">Categorías</a>
@@ -29,18 +28,29 @@
         </nav>
       </div>
     </header>
-    <div ng-app="module-interface2" ng-controller="controller-interface2 as cInterface2" ng-init="myUrl = 'recipe.html'">
+    <div class="filter">
       <ul>
-      <div class="container__food" ng-repeat="recipe in cInterface2.allRecipes">
-        <div class="food__column" ng-mousedown="myUrl = cInterface2.goHashtag($index)">
-          <li>
+        <li><input type="number" min=0 name="" value=""></li>
+        <li><input type="text" name="" value="">Nombre</li>
+        <li><input type="checkbox" name="" value="">Categorias</li>
+        <li><input type="checkbox" name="" value="">Dificultad</li>
+        <li><input type="checkbox" name="" value="">Tiempo</li>
+        <li>
+          <div class="">
+            <input type="text" name="" value="">Region
+            <button type="button" name="button"></button>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div ng-app="module-interface2" ng-controller="controller-interface2 as cInterface2" ng-init="myUrl = ''">
+      <ul class="container__food">
+          <li class="food__column" ng-repeat="recipe in cInterface2.allRecipes" ng-mouseup="myUrl = cInterface2.goHashtag($index)">
             <a href="{{myUrl}}">
               <img src="{{recipe.image}}" alt="{{recipe.image}}">
               <p class="name__food">{{recipe.name}}</p>
             </a>
           </li>
-        </div>
-      </div>
       </ul>
     </div>
   </body>
