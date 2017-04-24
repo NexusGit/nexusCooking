@@ -9,7 +9,8 @@
 
 body {
   font-family: 'Mallanna', sans-serif;
-  background: #E0E0E0;
+  background: #9E9E9E;
+  margin-top: 80px;
 }
 
 .container {
@@ -33,7 +34,7 @@ h1	{
 	font-family: 'Lobster', cursive;
 	color: #fff;
   text-align: center;
-  margin-top: -5px;
+  margin-top: 20px;
 }
 
 #menu-var2 {
@@ -76,73 +77,75 @@ header label {
   margin-top: -48px;
 }
 
-#arrow {
-  background: none;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  font-size: 20px;
-  margin-top: 10px;
+.bars {
+  margin-right: 7px;
 }
+/*-------------------------------------Menu2-------------------------------------*/
+
 
 /*-------------------------------------Img-------------------------------------*/
 
-img {
-  width: 100%;
+ul li {
+  list-style: none;
 }
 
-p {
-  margin: 5px;
-  padding: 5px;
-  margin: auto;
-  font-size: 20px;
+ul li a {
+ text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+ul li a p {
   color: #fff;
+  padding: 10px;
+  font-size: 18px;
 }
 
 .container__food {
-  width: 98%;
-  margin: auto;
-  margin-top: 80px;
+  padding: 20px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
 .food__column {
-  width: 100%;
-  margin-left: 5px;
-  margin-right: 5px;
-  margin-top: 10px;
+  width: 80%;
   background: #B71C1C;
 }
 
-@media (min-width:400px) {
-  .container__food {
-    width: 100%;
+@media (min-width:60px) {
+  .food__column {
     margin: auto;
-    margin-top: 80px;
-    display: flex;
-
+    width: 60%;
+    margin-top: 7px;
   }
 
-  .food__column {
-    width: 100%;
+  .container__food {
+    padding: 10px;
+    display: block;
+
   }
 }
 
-@media (min-width:420px) {
+@media (min-width:480px) {
+  .food__column {
+    width: 60%;
+    margin: 5px;
+  }
 
   .container__food {
-    width: 98%;
-    margin: auto;
-    margin-top: 80px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
   }
+}
 
+@media (min-width:768px) {
   .food__column {
-    width: 40%;
+    width: 30%;
   }
 }
 
@@ -170,18 +173,8 @@ p {
     display: none;
   }
 
-  .container__food {
-    width: 98%;
-    margin: auto;
-    margin-top: 80px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+  .food__column {
+    width: 20%;
   }
 
-  .food__column {
-    width: 30%;
-    margin-left: 5px;
-    margin-right: 5px;
-    background: #B71C1C;
-  }
+}
