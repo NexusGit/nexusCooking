@@ -1,0 +1,281 @@
+@import url('https://fonts.googleapis.com/css?family=Mallanna');
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+@import url(fixedmenu.css);
+@import url(poster.css);
+
+
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Mallanna', sans-serif;
+}
+
+h1	{
+	font-family: 'Lobster', cursive;
+	margin-top: 30px;
+	color: #fff;
+}
+
+header {
+  width: 100%;
+  height: 70px;
+  background: #43A047;
+  color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+header a {
+	text-decoration: none;
+}
+
+.container {
+	width: 98%;
+  margin: auto;
+}
+
+.seeker {
+  width: 98%;
+  max-width: 98%;
+  margin: auto;
+}
+
+.seeker input {
+	width: 100%;
+  margin: auto;
+  margin-top: 15px;
+  padding: 7px;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 7px;
+  border: 3px solid #fff;
+}
+
+#ingredient {
+	color: #fff;
+}
+
+.seeker input:hover {
+  background: rgba(14, 20, 14, 0.83);
+}
+
+#addButton {
+	position: relative;
+	display: inline-block;
+	width: 27px;
+	height: 27px;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	cursor: pointer;
+	top: -34px;
+	left: 89%;
+	color: #fff;
+	border: none;
+	border-radius: 7px;
+	background: none;
+}
+
+#bottom {
+	width: 100%;
+	position: absolute;
+	bottom: 0%;
+	text-align: center;
+	justify-content: center;
+	background: #B71C1C;
+}
+
+#bottom .social {
+	display: none;
+}
+
+
+.button {
+	width: 100%;
+	background: #000;
+	border: 1px solid rgba(255, 255, 255, 0.5);
+	position: relative;
+	display: inline;
+	padding: 5px;
+}
+
+#button__left {
+	border-bottom-left-radius: 4px;
+	border-top-left-radius: 4px;
+}
+
+#button__right {
+	border-top-right-radius: 4px;
+	border-bottom-right-radius: 4px;
+}
+
+.button a {
+	color: #fff;
+	text-decoration: none;
+	text-align: center;
+}
+
+.button:hover {
+	background: #C62828;
+}
+
+#stockList {
+}
+
+#stockIng {
+	border-bottom: 2px solid rgba(183, 28, 28, 0.4);
+	font-size: 22px;
+	width: 100%;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	margin: auto;
+	padding: 4px;
+	cursor: pointer;
+}
+
+#ingredList {
+	cursor: pointer;
+}
+
+
+
+#content {
+	background: rgba(14, 20, 14, 0.83);
+	color: #fff;
+	border-radius: 4px;
+	width: 96%;
+	margin: auto;
+	position: relative;
+	top: 140px;
+	list-style-type: none;
+	max-height: 50%;
+	max-height: 50vh;
+	overflow-x: hidden;
+}
+
+#content ul li{
+		list-style-type: none;
+}
+
+@media (min-width:400px) {
+	#addButton {
+		left: 94%;
+	}
+}
+
+@media (min-width:700px) {
+	#addButton {
+		left: 96%;
+	}
+}
+
+@media (min-width:1024px) {
+	.seeker {
+	  width: 90%;
+	  max-width: 60%;
+	  margin: auto;
+	}
+
+	.seeker input {
+	  width: 70%;
+		height: 40px;
+	  margin: auto;
+	  margin-top: 20px;
+	  padding-top: 10px;
+	  padding: 7px;
+	 	background: rgba(0, 0, 0, 0.7);
+	  border-radius: 7px;
+	  border: 3px solid #fff;
+		display: flex;
+		justify-content: center;
+	}
+
+	.seeker input:hover {
+		background: rgba(14, 20, 14, 0.83);
+	}
+
+	#ingredient {
+		color: #fff;
+	}
+
+	#addButton {
+		width: 27px;
+		height: 27px;
+		position: relative;
+		display: inline-block;
+		cursor: pointer;
+		top: -36px;
+		left: 80%;
+		color: #fff;
+		border: none;
+		border-radius: 7px;
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+	}
+
+	.copy {
+	font-size: 20px;
+	}
+
+	.social {
+	  width: 100%;
+	  text-align: center;
+	  font-size: 28px;
+	}
+
+	#content {
+		border-radius: 4px;
+		width: 50%;
+		margin: auto;
+		position: relative;
+		top: 140px;
+		list-style-type: none;
+		max-height: 50%;
+		max-height: 50vh;
+		overflow-x: hidden;
+	}
+
+	#bottom {
+		background: #B71C1C;
+		width: 100%;
+		bottom: 0%;
+		position: absolute;
+		text-align: center;
+		justify-content: center;
+	}
+
+	#bottom .social {
+		display: block;
+	}
+	.copy {
+	  font-size: 18px;
+		color: #fff;
+	}
+
+	.social {
+	  width: 100%;
+	  text-align: center;
+	  font-size: 23px;
+	}
+
+	.social a {
+	  color: #fff;
+	  text-decoration: none;
+	}
+
+	.button {
+		width: 100%;
+		background: #000;
+		border: 1px solid rgba(255, 255, 255, 0.5);
+		position: relative;
+		display: inline;
+		padding: 10px;
+	}
+}
