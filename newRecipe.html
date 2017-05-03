@@ -1,50 +1,39 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" href="res/css/newRecipe.css">
         <script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
         <script src="res/js/db-connection.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
+        <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
         <script src="res/js/module-data.js"></script>
     </head>
     <body>
-        <div ng-app="module-data" ng-controller="controller-data as cData">
+        <div id="mainContainer" ng-app="module-data" ng-controller="controller-data as cData">
             <div id="addData">
-                Name:</br><input type="text" ng-model="cData.name_"></br></br>
-                Steps:</br><textarea rows="8" cols="40" ng-model="cData.steps_"></textarea></br></br>
-                Time:</br><input type="number" ng-model="cData.time_"></br></br>
-                For how many people:</br><input type="number" ng-model="cData.forHowMany" min="1"></br></br>
-                Image URL:</br><input type="file" id="file" name="file"></br></br>
-                <script src="upload-image.js"></script>
-                Difficulty:</br>
+                Name:<input type="text" ng-model="cData.name_"></br></br>
+                Time:<input type="number" ng-model="cData.time_" min="1">
+                For how many people:<input type="number" ng-model="cData.forHowMany" min="1"></br></br>
+                Difficulty:
                 <select ng-model="cData.difficulty_">
                     <option value="1">Easy</option>
                     <option value="2">Medium</option>
                     <option value="3">Hard</option>
-                </select></br></br>
-                Regions:</br> 
+                </select>
+                Regions: 
                 <select ng-model="cData.regions_">
-                    <option value="argentina">Argentina</option>
-                    <option value="chile">Chile</option>
-                    <option value="uruguay">Uruguay</option>
-                </select></br></br>
-                Time Type:</br> 
-                <select ng-model="cData.timeType_">
-                    <option value="express">Express</option>
-                    <option value="long">Long</option>
-                </select></br></br>
-                Category:</br> 
+                    <option ng-repeat="(key, value) in cData.regionsList" value="{{key}}">{{value.charAt(0).toUpperCase() + value.slice(1)}}</option>
+                </select>
+                Category:
                 <select ng-model="cData.category_">
-                    <option value="asados">Asados</option>
-                    <option value="ensaladas">Ensaladas</option>
-                    <option value="panificaciones">Panificaciones</option>
-                    <option value="sopas">Sopas</option>
+                    <option ng-repeat="(key, value) in cData.categoriesList" value="{{key}}">{{value.charAt(0).toUpperCase() + value.slice(1)}}</option>
                 </select></br></br>
-                Ingredients:</br> 
+                Ingredients:
                 <select ng-model="cData.ingredient_">
                     <option ng-repeat="(key, value) in cData.ingredientsList" value="{{key}}">{{value}}</option>
                 </select>
                 Amount:
-                <input type="number" ng-model="cData.amount">
+                <input type="number" ng-model="cData.amount" min="1">
                 Unit:
                 <select ng-model="cData.unit">
                     <option value="cucharadas">Cucharada(s)</option>
@@ -54,22 +43,20 @@
                     <option value="tazas">Taza(s)</option>
                     <option value="unidades">Unidad(es)</option>
                 </select>
-                <input type="button" value="+" ng-click="cData.addIngredient()"></br></br>
-                Ingredients added:</br>
+                <input type="button" value="Add ingredient" ng-click="cData.addIngredient()"></br></br>
+                Ingredients added:
                 <select ng-model="cData.ingredientToRemove">
                     <option ng-repeat="(key, value) in cData.ingredientsListAdded" value="{{key}}">{{value.name}}</option>
                 </select>
                 <input type="button" value="-" ng-click="cData.removeIngredient()"></br></br>
+                Image URL:<input type="file" id="file" name="file"></br></br>
+                Steps:</br><textarea rows="8" cols="40" ng-model="cData.steps_"></textarea></br></br>
+                <script src="res/js/upload-image.js"></script>
                 <input type="button" value="Add new recipe!" ng-click="cData.addRecipe()">
-            </div>
-            <div ng-app="module-data" ng-controller="controller-ingredients as cIngredients">
-                <hr>
-                <hr>
-                Crear nuevo ingrediente:
-                <input type="text" ng-model="cIngredients.name_">
-                <input type="button" value="Add new ingredient!" ng-click="cIngredients.addIngredient()">
+                </br></br></br></br>Crear nuevo ingrediente:
+                <input type="text" ng-model="cData.ingredientName_">
+                <input type="button" value="Add new ingredient!" ng-click="cData.addNewIngredient()">
             </div>
         </div>
-
     </body>
 </html>
