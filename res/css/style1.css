@@ -81,15 +81,27 @@ header a {
 	background: none;
 }
 
+#bottom {
+	width: 100%;
+	position: absolute;
+	bottom: 0%;
+	text-align: center;
+	justify-content: center;
+	background: #B71C1C;
+}
+
+#bottom .social {
+	display: none;
+}
+
 
 .button {
 	width: 100%;
-	height: auto;
 	background: #000;
 	border: 1px solid rgba(255, 255, 255, 0.5);
 	position: relative;
 	display: inline;
-	padding: 10px;
+	padding: 5px;
 }
 
 #button__left {
@@ -111,32 +123,6 @@ header a {
 .button:hover {
 	background: #C62828;
 }
-
-#bottom {
-  justify-content: center;
-	background: #B71C1C;
-	width: 100%;
-	bottom: 0%;
-	position: absolute;
-	text-align: center;
-}
-
-.copy {
-  font-size: 18px;
-	color: #fff;
-}
-
-.social {
-  width: 100%;
-  text-align: center;
-  font-size: 23px;
-}
-
-.social a {
-  color: #fff;
-  text-decoration: none;
-}
-
 
 #stockList {
 }
@@ -254,5 +240,42 @@ header a {
 		max-height: 50%;
 		max-height: 50vh;
 		overflow-x: hidden;
+	}
+
+	#bottom {
+		background: #B71C1C;
+		width: 100%;
+		bottom: 0%;
+		position: absolute;
+		text-align: center;
+		justify-content: center;
+	}
+
+	#bottom .social {
+		display: block;
+	}
+	.copy {
+	  font-size: 18px;
+		color: #fff;
+	}
+
+	.social {
+	  width: 100%;
+	  text-align: center;
+	  font-size: 23px;
+	}
+
+	.social a {
+	  color: #fff;
+	  text-decoration: none;
+	}
+
+	.button {
+		width: 100%;
+		background: #000;
+		border: 1px solid rgba(255, 255, 255, 0.5);
+		position: relative;
+		display: inline;
+		padding: 10px;
 	}
 }

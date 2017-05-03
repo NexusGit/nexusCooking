@@ -33,7 +33,7 @@ h1	{
 	font-family: 'Lobster', cursive;
 	color: #fff;
   text-align: center;
-  margin-top: -5px;
+  margin-top: 17px;
 }
 
 #menu-var2 {
@@ -132,9 +132,9 @@ h2 {
   margin: auto;
   border: 3px solid #263238;
   width: 50px;
-  height: 37px;
+  height: 46px;
   position: relative;
-  bottom: 3px;
+  bottom: 4px;
   z-index: -2;
 }
 
@@ -142,6 +142,7 @@ h2 {
   margin: auto;
   font-size: 20px;
   width: 50px;
+  padding: 5px;
   background: #263238;
   color: #fff;
 }
@@ -194,6 +195,42 @@ input[type=number]::-webkit-outer-spin-button {
   backface-visibility: hidden;
   position: absolute;
 }
+
+.ingredient__circle__1 {
+  width: 100%;
+  height: 100%;
+  padding: 5px;
+  margin: auto;
+  margin-right: 15px;
+  margin-top: 15px;
+  background: #263238;
+  color: #fff;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 10px;
+  top: 10px;
+  float: left;
+  clear: both;
+}
+
+.ingredient__circle2__1 {
+  width: 100%;
+  height: 100%;
+  padding: 5px;
+  margin: auto;
+  margin-right: 15px;
+  margin-top: 15px;
+  background: #004D40;
+  color: #fff;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 10px;
+  top: 10px;
+  float: left;
+  clear: both;
+  transform: rotateY(180deg);
+}
+
 
 .ingredient__circle {
   width: 100%;
