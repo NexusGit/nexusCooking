@@ -1,24 +1,36 @@
 angular
     .module("module-data", [])
-    .controller("controller-data", function(){
+    .controller("controller-data", function($scope){
         var cData = this;
         cData.difficulty_=0;
         cData.image_="";
         cData.name_="";
         cData.regions_="";
         cData.steps_="";
-        cData.time_=0;
+        cData.time_=15;
+        cData.forHowMany=4;
         cData.timeType_="";
         cData.category_="";
         cData.ingredientsList = new Object();
         cData.ingredientsListAdded = new Object();
+        cData.regionsList = new Object();
+        cData.categoriesList = new Object();
+        cData.ingredientName_="";
+        localStorage.setItem('currentURLimg', 'https://images-na.ssl-images-amazon.com/images/I/31XrGujYNTL.jpg');
 
-        // Ver los ingredientes que existen en la DB
-        db.ref('db/ingredients/').orderByChild('name').once('value', function(snapshot){
-            for (myIngredient in snapshot.val()){
-                db.ref('db/ingredients/' + myIngredient + '/').once('value', function(snapshot){
-                    cData.ingredientsList[snapshot.key] = snapshot.val().name;
-                })
+        // Ver las regiones que existen en la DB
+        db.ref('db/regions/').once('value', function(snapshot){
+            for (myRegion in snapshot.val()){
+                    cData.regionsList[myRegion] = myRegion;
+                    $scope.$apply();
+            }
+        })
+
+        // Ver las categorias que existen en la DB
+        db.ref('db/categories/').once('value', function(snapshot){
+            for (myCategory in snapshot.val()){
+                    cData.categoriesList[myCategory] = myCategory;
+                    $scope.$apply();
             }
         })
 
@@ -49,10 +61,11 @@ angular
 
         // Carga en la lista los ingredientes de la DB
         cData.getIngredient = function(){
-            db.ref('db/ingredients/').orderByValue('name').once('value', function(snapshot){
+            db.ref('db/ingredients/').once('value', function(snapshot){
                 for (myIngredient in snapshot.val()){
-                    db.ref('db/ingredients/' + myIngredient + '/').orderByValue('name').once('value', function(snapshot){
-                        cData.ingredientsList.push(snapshot.val().name);
+                    db.ref('db/ingredients/' + myIngredient + '/').once('value', function(snapshot){
+                        cData.ingredientsList[snapshot.key] = snapshot.val().name;
+                        $scope.$apply();
                     })
                 }
             })
@@ -60,14 +73,23 @@ angular
 
         // Agrega una nueva receta segun lo ingresado en la vista
         cData.addRecipe = function(){
+            if (cData.time_ <= 15){
+                cData.timeType_ = "express";
+            } else if (cData.time_ < 60){
+                cData.timeType_ = "normal";
+            } else {
+                cData.timeType_ = "long";
+            }
             var newRecipe = {
                 author:{
                     admin:true
                 },
                 favorites:0,
+                date:firebase.database.ServerValue.TIMESTAMP,
                 image:localStorage.getItem('currentURLimg'),
                 name:cData.name_,
                 stars:0,
+                views:0,
                 time:cData.time_,
                 votes:0,
                 difficulty:{
@@ -87,7 +109,7 @@ angular
             var newRecipeKey = db.ref('db/').child('recipes').push().key;
             db.ref('db/recipes/' + newRecipeKey).update(newRecipe);
 
-            db.ref('db/names/' + cData.name_ + '/recipes').update({[newRecipeKey]:true})
+            db.ref('db/names/').update({[cData.name_]:true})
             db.ref('db/difficulties/' + cData.difficulty_ + '/recipes').update({[newRecipeKey]:true})
             db.ref('db/regions/' + cData.regions_ + '/recipes').update({[newRecipeKey]:true})
             db.ref('db/timeTypes/' + cData.timeType_ + '/recipes').update({[newRecipeKey]:true})
@@ -100,18 +122,18 @@ angular
             for (ingredient in cData.ingredientsListAdded){
                 db.ref('db/ingredients/' + ingredient + '/recipes').update({[newRecipeKey]:true});
             }
+            localStorage.setItem('currentURLimg', 'https://images-na.ssl-images-amazon.com/images/I/31XrGujYNTL.jpg');
             return true
         }
-    })
-    .controller("controller-ingredients", function(){
-        var cIngredients = this;
-        cIngredients.name_="";
 
-        cIngredients.addIngredient = function(){
+        // Agrega un nuevo ingrediente
+        cData.addNewIngredient = function(){
             var newIngredient = {
-                name:cIngredients.name_
+                name:cData.ingredientName_
             };
-            var newIngredientKey = db.ref('db/').child('ingredients').push().key;
-            db.ref('db/ingredients/' + newIngredientKey).update(newIngredient);
+            var newIngredientKey = db.ref('db/').child('ingredients/' + cData.ingredientName_).update(newIngredient);
+            cData.getIngredient();
         }
+
+        cData.getIngredient();
     });

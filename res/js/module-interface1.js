@@ -1,6 +1,6 @@
 angular
     .module("module-interface1", ['firebase'])
-    .controller("controller-interface1", function($firebaseObject){
+    .controller("controller-interface1", function($firebaseObject, $scope){
         var cInterface1 = this;
         const rootRef = firebase.database().ref().child('db');
         const ref = rootRef.child('recipes');
@@ -14,6 +14,7 @@ angular
             for (myIngredient in snapshot.val()){
                 db.ref('db/ingredients/' + myIngredient + '/').once('value', function(snapshot){
                     cInterface1.ingredientsList[snapshot.key] = snapshot.val().name;
+                    $scope.$apply();
                 })
             }
         })

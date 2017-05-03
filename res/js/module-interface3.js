@@ -8,7 +8,8 @@ angular
         cInterface3.currentRecipe = new Object();
         cInterface3.ingredientsList = new Object();
         cInterface3.stepsList = new Object();
-        cInterface3.amount = 2;
+        cInterface3.amount = 4;
+
         // Ver los ingredientes que existen en la DB
         db.ref('db/recipes/' + $location.hash() + '/ingredients').once('value', function(snapshot){
             for (myIngredient in snapshot.val()){
