@@ -13,27 +13,49 @@ angular
         cInterface2.category = {arroces:false, bebidascocteles:false, carnes:false, creamaspuressopas:false, ensaladas:false, legumbres:false, pastas:false, pescadosmariscos:false, postres:false, salsasbases:false, verduras:false, otros:false};
         cInterface2.categoryFilter = new Object();
         cInterface2.difficulty = new Object();
-        cInterface2.difficulty = {1:false, 2:false, 3:false};
+        cInterface2.difficulty = {facil:false, intermedio:false, dificil:false};
         cInterface2.difficultyFilter = new Object();
         cInterface2.time = new Object();
         cInterface2.time = {express:false, normal:false, long:false};
         cInterface2.timeFilter = new Object();
+        cInterface2.nameFilter = "";
 
-        // Traer todas las recetas
+        // Trae todas las recetas y las filtra
         cInterface2.bringEveryRecipe = function(){
             db.ref('db/recipes').once('value').then(function(snapshot){
                 cInterface2.allRecipes = snapshot.val();
                 $scope.$apply();
-                if (cInterface2.getCategoriesChecked().length != 0){
+                if ((cInterface2.getCategoriesChecked().length != 0) || (cInterface2.getDifficultiesChecked().length != 0) || (cInterface2.getTimesChecked().length != 0) || (cInterface2.nameFilter != "")){
                     for (recipe in cInterface2.allRecipes){
-                        var isContained = false;
+                        var isContained1 = true;
                         for (var i = 0; i < cInterface2.getCategoriesChecked().length; i++){
+                            isContained1 = false;
                             if (cInterface2.getCategoriesChecked()[i] == Object.keys(cInterface2.allRecipes[recipe].category)[0]){
-                                isContained = true;
+                                isContained1 = true;
                                 break;
                             }
                         }
-                        if (!isContained){
+                        var isContained2 = true;
+                        for (var i = 0; i < cInterface2.getDifficultiesChecked().length; i++){
+                            isContained2 = false;
+                            if (cInterface2.getDifficultiesChecked()[i] == Object.keys(cInterface2.allRecipes[recipe].difficulty)[0]){
+                                isContained2 = true;
+                                break;
+                            }
+                        }
+                        var isContained3 = true;
+                        for (var i = 0; i < cInterface2.getTimesChecked().length; i++){
+                            isContained3 = false;
+                            if (cInterface2.getTimesChecked()[i] == Object.keys(cInterface2.allRecipes[recipe].timeType)[0]){
+                                isContained3 = true;
+                                break;
+                            }
+                        }
+                        var isName = false;
+                        if (cInterface2.allRecipes[recipe].name.toLowerCase().includes(cInterface2.nameFilter.toLowerCase())){
+                            isName = true;
+                        }
+                        if (!(isContained1 && isContained2 && isContained3 && isName)){
                             delete cInterface2.allRecipes[recipe];
                         }
                     }
@@ -42,7 +64,7 @@ angular
             })
         }
         
-        // Traer solo las recetas que esten coincidentes con el filtro
+        // Trae solo las recetas que esten coincidentes con la lista de ingredientes teniendo en cuenta los extras y las filtra
         cInterface2.bringSomeRecipe = function(){
             for (ingredient in cInterface2.myData){
                 db.ref('db/ingredients/' + ingredient + '/recipes').once('value').then(function(snapshot){
@@ -61,20 +83,44 @@ angular
                         if (extraIngredients <= cInterface2.extraIngredientsAllowed){
                             cInterface2.allRecipes[recipe] = true;
                             db.ref('db/recipes/').child(recipe).once('value', function(snapshot){
-                                if (!cInterface2.getCategoriesChecked().length){
+                                if ((cInterface2.getCategoriesChecked().length == 0) && (cInterface2.getDifficultiesChecked().length == 0) && (cInterface2.getTimesChecked().length == 0) && cInterface2.nameFilter == ""){
                                     cInterface2.allRecipes[recipe] = snapshot.val();
                                     $scope.$apply();
                                 }else{
+                                    var isIncludedInFilter1 = true;
                                     for (var i = 0; i < cInterface2.getCategoriesChecked().length; i++){
-                                        console.log(cInterface2.getCategoriesChecked()[i]);
+                                        isIncludedInFilter1 = false;
                                         if (JSON.stringify(snapshot.val().category).includes(cInterface2.getCategoriesChecked()[i])){
-                                            cInterface2.allRecipes[recipe] = snapshot.val();
-                                            $scope.$apply();
-                                            i = cInterface2.getCategoriesChecked().length;
-                                        }else{
-                                            delete cInterface2.allRecipes[recipe];
-                                            $scope.$apply();
+                                            isIncludedInFilter1 = true;
+                                            break;
                                         }
+                                    }
+                                    var isIncludedInFilter2 = true;
+                                    for (var i = 0; i < cInterface2.getDifficultiesChecked().length; i++){
+                                        isIncludedInFilter2 = false;
+                                        if (JSON.stringify(snapshot.val().difficulty).includes(cInterface2.getDifficultiesChecked()[i])){
+                                            isIncludedInFilter2 = true;
+                                            break;
+                                        }
+                                    }
+                                    var isIncludedInFilter3 = true;
+                                    for (var i = 0; i < cInterface2.getTimesChecked().length; i++){
+                                        isIncludedInFilter3 = false;
+                                        if (JSON.stringify(snapshot.val().timeType).includes(cInterface2.getTimesChecked()[i])){
+                                            isIncludedInFilter3 = true;
+                                            break;
+                                        }
+                                    }
+                                    var isName = false;
+                                    if (snapshot.val().name.toLowerCase().includes(cInterface2.nameFilter.toLowerCase())){
+                                        isName = true;
+                                    }
+                                    if (isIncludedInFilter1 && isIncludedInFilter2 && isIncludedInFilter3 && isName){
+                                        cInterface2.allRecipes[recipe] = snapshot.val();
+                                        $scope.$apply();
+                                    }else{
+                                        delete cInterface2.allRecipes[recipe];
+                                        $scope.$apply();
                                     }
                                 }
                             })
@@ -84,7 +130,7 @@ angular
                         }
                     }
                 })
-            }console.log(cInterface2.allRecipes);
+            }
         }
 
         // Devuelve la ruta de la interfaz 3 con el hashtag de la receta correspondiente
@@ -142,7 +188,7 @@ angular
                     cInterface2.difficultyFilter[myDifficulty] = myDifficulty;
                 }
             }
-            return Object.values(cInterface2.categoryFilter);
+            return Object.values(cInterface2.difficultyFilter);
         }
 
         // Filtra por dificultad la lista de recetas a mostrar
@@ -159,7 +205,7 @@ angular
                     cInterface2.timeFilter[myTime] = myTime;
                 }
             }
-            return Object.values(cInterface2.categoryFilter);
+            return Object.values(cInterface2.timeFilter);
         }
 
         // Filtra por tiempo de realizacion la lista de recetas a mostrar
