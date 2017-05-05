@@ -11,6 +11,10 @@
 	box-sizing: border-box;
 }
 
+input::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
 body {
 	font-family: 'Mallanna', sans-serif;
 }
