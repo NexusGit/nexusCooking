@@ -215,4 +215,9 @@ angular
         }
 
         cInterface2.chooseInitializer();
+        
+        cInterface2.asd = function(){
+            
+        }
+
     })

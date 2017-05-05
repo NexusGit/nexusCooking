@@ -9,6 +9,12 @@ angular
         cInterface3.ingredientsList = new Object();
         cInterface3.stepsList = new Object();
         cInterface3.amount = 4;
+        cInterface3.currentTimeType = "";
+        cInterface3.currentUploaded = "";
+        cInterface3.currentRegion = "";
+        cInterface3.currentDifficulty = "";
+        cInterface3.currentCategory = "";
+        cInterface3.currentAuthor = "";
 
         // Ver los ingredientes que existen en la DB
         db.ref('db/recipes/' + $location.hash() + '/ingredients').once('value', function(snapshot){
@@ -29,8 +35,16 @@ angular
             for(myStep in cInterface3.currentRecipe.steps){
                 cInterface3.stepsList[myStep] = cInterface3.currentRecipe.steps[myStep];
             }
+            cInterface3.addView();
+            cInterface3.currentTimeType = Object.keys(cInterface3.currentRecipe.timeType)[0].charAt(0).toUpperCase() + Object.keys(cInterface3.currentRecipe.timeType)[0].slice(1);
+            cInterface3.currentRegion = Object.keys(cInterface3.currentRecipe.region)[0].charAt(0).toUpperCase() + Object.keys(cInterface3.currentRecipe.region)[0].slice(1);
+            cInterface3.currentDifficulty = Object.keys(cInterface3.currentRecipe.difficulty)[0].charAt(0).toUpperCase() + Object.keys(cInterface3.currentRecipe.difficulty)[0].slice(1);
+            cInterface3.currentCategory = Object.keys(cInterface3.currentRecipe.category)[0].charAt(0).toUpperCase() + Object.keys(cInterface3.currentRecipe.category)[0].slice(1);
+            cInterface3.currentAuthor = Object.keys(cInterface3.currentRecipe.author)[0].charAt(0).toUpperCase() + Object.keys(cInterface3.currentRecipe.author)[0].slice(1);
+            cInterface3.currentUploaded = "" + new Date(cInterface3.currentRecipe.date).getDay() + "/" + new Date(cInterface3.currentRecipe.date).getMonth() + "/" + new Date(cInterface3.currentRecipe.date).getFullYear();
         })
 
+        // Separa los pasos de las recetas para visualizarlos correctamente.
         cInterface3.setRecipes = function(snapshot){
             cInterface3.currentRecipe = snapshot.val();
             for(myStep in cInterface3.currentRecipe.steps){
@@ -56,4 +70,14 @@ angular
         cInterface3.moreAmount = function(){
             cInterface3.amount++;
         }
+
+        // Incrementar la cantidad de vistas
+        cInterface3.addView = function(){
+            db.ref('db/recipes/' + $location.hash() + '/views').once('value').then(function(snapshot){
+                var views = snapshot.val();
+                ++views;
+                db.ref('db/').child('recipes/' + $location.hash()).update({views:views});
+            })
+        }
+        
     })

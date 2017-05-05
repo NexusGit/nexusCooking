@@ -71,6 +71,35 @@ angular
             })
         }
 
+        // Verifica la imagen
+        cData.verifyImage = function(){
+            if (isPossible){
+                cData.uploadImage();
+            }else{
+                if (confirm("No se ha cargado una imagen o no es adecuada, desea continuar de todas formas?")){
+                    cData.uploadImage();
+                }
+            }
+        }
+
+        // Sube la imagen y llama a agregar la receta
+        cData.uploadImage = function(){
+            var generatedKey = db.ref('db/').child('imagesKeys').push().key;
+            try{
+                storageRef.child('stg/recipes/images/' + generatedKey + '/' + file.name).put(file, metadata).then(function(snapshot) {
+                    localStorage.setItem('currentURLimg', snapshot.downloadURL);
+                    cData.addRecipe();
+                }).catch(function(error) {
+                    alert('Error on the action: Upload failed', error);
+                    console.log(error)
+                });
+            }
+            catch(err){
+                cData.addRecipe();
+                alert('La receta se ha subido sin imagenes');
+            }
+        }
+
         // Agrega una nueva receta segun lo ingresado en la vista
         cData.addRecipe = function(){
             if (cData.time_ <= 15){
@@ -82,7 +111,7 @@ angular
             }
             var newRecipe = {
                 author:{
-                    admin:true
+                    NexusCode:true
                 },
                 favorites:0,
                 date:firebase.database.ServerValue.TIMESTAMP,
