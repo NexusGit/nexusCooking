@@ -5,14 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
     <link rel="stylesheet" href="res/css/style2.css">
-    <link rel="stylesheet" href="res/css/fontello2.css">
     <link rel="stylesheet" href="res/css/font-awesome.min.css">
+    <link rel = "stylesheet" href ="lib/jquery-ui/jquery-ui.min.css">
+		<link rel = "stylesheet" href ="lib/jquery-ui/jquery-ui.structure.min.css">
+		<link rel = "stylesheet" href ="lib/jquery-ui/jquery-ui.theme.min.css">
     <script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
     <script src="res/js/db-connection.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
     <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
     <script src="res/js/module-interface2.js"></script>
     <script src="lib/underscore.js"></script>
+    <script src="res/js/jquery.min.js"></script>
+    <script src ="lib/jquery-ui/jquery-ui.min.js"></script>
+    <script src="res/js/filters-menu.js"></script>
   </head>
   <body ng-app="module-interface2" ng-controller="controller-interface2 as cInterface2">
     <header>
@@ -28,45 +33,97 @@
         </nav>
       </div>
     </header>
-    <div class="filter">
-      <ul>
+    <a class="btn-menu" href="#"><i class="fa fa-filter" aria-hidden="true"></i></a>
+    <div class="filter" id="menu_filter">
+      <h2>Cantidad de ingredientes extras</h2>
+      <div class="">
+        <button ng-click="cInterface2.substractExtraIngredientsAllowed()">Menos</button>
+        <input type="number" min="0" name="" value="" ng-model="cInterface2.extraIngredientsAllowed">
+        <button ng-click="cInterface2.addExtraIngredientsAllowed()">Mas</button>Ingredientes extras
+      </div>
+
+      <h2>Nombre</h2>
+      <div class="">
+        <input ng-change="cInterface2.chooseInitializer();" type="text" name="" value="" ng-model="cInterface2.nameFilter">Nombre
+      </div>
+
+      <h2>Categorias</h2>
+      <div class="">
+        <ul class="overflow">
+          <li><label for="filters-arroces"><input id="filters-arroces" ng-change="cInterface2.filterCategoryData()" ng-model="cInterface2.category['arroces']" type="checkbox" name="" value="">Arroces</label></li>
+          <li><label for="filters-bebidas"><input id="filters-bebidas" ng-change="cInterface2.filterCategoryData()" ng-model="cInterface2.category['bebidascocteles']" type="checkbox" name="" value="">Bebidas / Cocteles</label></li>
+          <li><label for="filters-carnes"><input id="filters-carnes" ng-change="cInterface2.filterCategoryData()" ng-model="cInterface2.category['carnes']" type="checkbox" name="" value="">Carnes</label></li>
+          <li><label for="filters-cremas"><input id="filters-cremas" ng-change="cInterface2.filterCategoryData()" ng-model="cInterface2.category['creamaspuressopas']" type="checkbox" name="" value="">Cremas / Pures / Sopas</label></li>
+          <li><label for="filters-ensaladas"><input id="filters-ensaladas" ng-change="cInterface2.filterCategoryData()" ng-model="cInterface2.category['ensaladas']" type="checkbox" name="" value="">Ensaladas</label></li>
+          <li><label for="filters-legumbres"><input id="filters-legumbres" ng-change="cInterface2.filterCategoryData()" ng-model="cInterface2.category['legumbres']" type="checkbox" name="" value="">Legumbres</label></li>
+          <li><label for="filters-pastas"><input id="filters-pastas" ng-change="cInterface2.filterCategoryData()" ng-model="cInterface2.category['pastas']" type="checkbox" name="" value="">Pastas</label></li>
+          <li><label for="filters-pescados"><input id="filters-pescados" ng-change="cInterface2.filterCategoryData()" ng-model="cInterface2.category['pescadosmariscos']" type="checkbox" name="" value="">Pescados / Mariscos</label></li>
+          <li><label for="filters-postres"><input id="filters-postres" ng-change="cInterface2.filterCategoryData()" ng-model="cInterface2.category['postres']" type="checkbox" name="" value="">Postres</label></li>
+          <li><label for="filters-salsas"><input id="filters-salsas" ng-change="cInterface2.filterCategoryData()" ng-model="cInterface2.category['salsasbases']" type="checkbox" name="" value="">Salsas / Bases</label></li>
+          <li><label for="filters-verduras"><input id="filters-verduras" ng-change="cInterface2.filterCategoryData()" ng-model="cInterface2.category['verduras']" type="checkbox" name="" value="">Verduras</label></li>
+          <li><label for="filters-otros"><input id="filters-otros" ng-change="cInterface2.filterCategoryData()" ng-model="cInterface2.category['otros']" type="checkbox" name="" value="">Otros</label></li>
+        </ul>
+      </div>
+      <h2>Dificultad</h2>
+      <div class="">
+        <ul class="overflow">
+          <li><label for="filters-facil"><input id="filters-facil" ng-change="cInterface2.filterDifficultyData()" ng-model="cInterface2.difficulty['facil']" type="checkbox" name="" value="">Facil</label></li>
+          <li><label for="filters-intermedio"><input id="filters-intermedio" ng-change="cInterface2.filterDifficultyData()" ng-model="cInterface2.difficulty['intermedio']" type="checkbox" name="" value="">Intermedio</label></li>
+          <li><label for="filters-dificil"><input id="filters-dificil" ng-change="cInterface2.filterDifficultyData()" ng-model="cInterface2.difficulty['dificil']" type="checkbox" name="" value="">Dificil</label></li>
+        </ul>
+      </div>
+      <h2>Tiempo</h2>
+      <div class="">
+        <ul class="overflow">
+          <li><label for="filters-express"><input id="filters-express" ng-change="cInterface2.filterTimeData()" ng-model="cInterface2.time['express']" type="checkbox" name="" value="">hasta 15'</label></li>
+          <li><label for="filters-normal"><input id="filters-normal" ng-change="cInterface2.filterTimeData()" ng-model="cInterface2.time['normal']" type="checkbox" name="" value="">de 16' a 60'</label></li>
+          <li><label for="filters-long"><input id="filters-long" ng-change="cInterface2.filterTimeData()" ng-model="cInterface2.time['long']" type="checkbox" name="" value="">Más de 1 hora</label></li>
+        </ul>
+      </div>
+
+      <!--
+      <a class="btn-menu" href="#"><i class="fa fa-filter" aria-hidden="true"></i></a>
+      <ul class="menu2">
         <li>
-          <button ng-click="cInterface2.substractExtraIngredientsAllowed()">Menos</button>
-            <input type="number" min="0" name="" value="" ng-model="cInterface2.extraIngredientsAllowed">
-          <button ng-click="cInterface2.addExtraIngredientsAllowed()">Mas</button>Ingredientes extras
+          <a href="#">
+            <button ng-click="cInterface2.substractExtraIngredientsAllowed()">Menos</button>
+              <input type="number" min="0" name="" value="" ng-model="cInterface2.extraIngredientsAllowed">
+            <button ng-click="cInterface2.addExtraIngredientsAllowed()">Mas</button>Ingredientes extras
+          </a>
         </li>
-        <li><input type="text" name="" value="">Nombre</li>
-        <li>Categorias</br>
-          <input ng-change="cInterface2.filterCategoryData()" ng-model="cInterface2.category['arroces']" type="checkbox" name="" value="">Arroces</br>
-          <input ng-change="cInterface2.filterCategoryData()" ng-model="cInterface2.category['bebidascocteles']" type="checkbox" name="" value="">Bebidas / Cocteles</br>
-          <input ng-change="cInterface2.filterCategoryData()" ng-model="cInterface2.category['carnes']" type="checkbox" name="" value="">Carnes</br>
-          <input ng-change="cInterface2.filterCategoryData()" ng-model="cInterface2.category['creamaspuressopas']" type="checkbox" name="" value="">Cremas / Pures / Sopas</br>
-          <input ng-change="cInterface2.filterCategoryData()" ng-model="cInterface2.category['ensaladas']" type="checkbox" name="" value="">Ensaladas</br>
-          <input ng-change="cInterface2.filterCategoryData()" ng-model="cInterface2.category['legumbres']" type="checkbox" name="" value="">Legumbres</br>
-          <input ng-change="cInterface2.filterCategoryData()" ng-model="cInterface2.category['pastas']" type="checkbox" name="" value="">Pastas</br>
-          <input ng-change="cInterface2.filterCategoryData()" ng-model="cInterface2.category['pescadosmariscos']" type="checkbox" name="" value="">Pescados / Mariscos</br>
-          <input ng-change="cInterface2.filterCategoryData()" ng-model="cInterface2.category['postres']" type="checkbox" name="" value="">Postres</br>
-          <input ng-change="cInterface2.filterCategoryData()" ng-model="cInterface2.category['salsasbases']" type="checkbox" name="" value="">Salsas / Bases</br>
-          <input ng-change="cInterface2.filterCategoryData()" ng-model="cInterface2.category['verduras']" type="checkbox" name="" value="">Verduras</br>
-          <input ng-change="cInterface2.filterCategoryData()" ng-model="cInterface2.category['otros']" type="checkbox" name="" value="">Otros</br>
+        <li><a href="#"><input ng-change="cInterface2.chooseInitializer();" type="text" name="" value="" ng-model="cInterface2.nameFilter">Nombre</a></li>
+        <li><a href="#">Categorias<i class="icono2 fa fa-chevron-down" aria-hidden="true"></i></a>
+          <ul class="overflow">
+            <li><label for="filters-m"><input id="filters-m" ng-change="cInterface2.filterCategoryData()" ng-model="cInterface2.category['arroces']" type="checkbox" name="" value="">Arroces</label></li>
+            <li><label for="filters-m"><input id="filters-m" ng-change="cInterface2.filterCategoryData()" ng-model="cInterface2.category['bebidascocteles']" type="checkbox" name="" value="">Bebidas / Cocteles</label></li>
+            <li><label for="filters-m"><input id="filters-m" ng-change="cInterface2.filterCategoryData()" ng-model="cInterface2.category['carnes']" type="checkbox" name="" value="">Carnes</label></li>
+            <li><label for="filters-m"><input id="filters-m" ng-change="cInterface2.filterCategoryData()" ng-model="cInterface2.category['creamaspuressopas']" type="checkbox" name="" value="">Cremas / Pures / Sopas</label></li>
+            <li><label for="filters-m"><input id="filters-m" ng-change="cInterface2.filterCategoryData()" ng-model="cInterface2.category['ensaladas']" type="checkbox" name="" value="">Ensaladas</label></li>
+            <li><label for="filters-m"><input id="filters-m" ng-change="cInterface2.filterCategoryData()" ng-model="cInterface2.category['legumbres']" type="checkbox" name="" value="">Legumbres</label></li>
+            <li><label for="filters-m"><input id="filters-m" ng-change="cInterface2.filterCategoryData()" ng-model="cInterface2.category['pastas']" type="checkbox" name="" value="">Pastas</label></li>
+            <li><label for="filters-m"><input id="filters-m" ng-change="cInterface2.filterCategoryData()" ng-model="cInterface2.category['pescadosmariscos']" type="checkbox" name="" value="">Pescados / Mariscos</label></li>
+            <li><label for="filters-m"><input id="filters-m" ng-change="cInterface2.filterCategoryData()" ng-model="cInterface2.category['postres']" type="checkbox" name="" value="">Postres</label></li>
+            <li><label for="filters-m"><input id="filters-m" ng-change="cInterface2.filterCategoryData()" ng-model="cInterface2.category['salsasbases']" type="checkbox" name="" value="">Salsas / Bases</label></li>
+            <li><label for="filters-m"><input id="filters-m" ng-change="cInterface2.filterCategoryData()" ng-model="cInterface2.category['verduras']" type="checkbox" name="" value="">Verduras</label></li>
+            <li><label for="filters-m"><input id="filters-m" ng-change="cInterface2.filterCategoryData()" ng-model="cInterface2.category['otros']" type="checkbox" name="" value="">Otros</label></li>
+          </ul>
         </li>
-        <li>Dificultad</br>
-          <input ng-change="cInterface2.filterDifficultyData()" ng-model="cInterface2.difficulty['1']" type="checkbox" name="" value="">Facil</br>
-          <input ng-change="cInterface2.filterDifficultyData()" ng-model="cInterface2.difficulty['2']" type="checkbox" name="" value="">Intermedio</br>
-          <input ng-change="cInterface2.filterDifficultyData()" ng-model="cInterface2.difficulty['3']" type="checkbox" name="" value="">Dificil</br>
+        <li><a href="">Dificultad<i class="icono2 fa fa-chevron-down" aria-hidden="true"></i></a>
+          <ul class="overflow">
+            <li><label for="filters-m"><input id="filters-m" ng-change="cInterface2.filterDifficultyData()" ng-model="cInterface2.difficulty['facil']" type="checkbox" name="" value="">Facil</label></li>
+            <li><label for="filters-m"><input id="filters-m" ng-change="cInterface2.filterDifficultyData()" ng-model="cInterface2.difficulty['intermedio']" type="checkbox" name="" value="">Intermedio</label></li>
+            <li><label for="filters-m"><input id="filters-m" ng-change="cInterface2.filterDifficultyData()" ng-model="cInterface2.difficulty['dificil']" type="checkbox" name="" value="">Dificil</label></li>
+          </ul>
         </li>
-        <li>Tiempo</br>
-          <input ng-change="cInterface2.filterTimeData()" ng-model="cInterface2.time['express']" type="checkbox" name="" value="">hasta 15'</br>
-          <input ng-change="cInterface2.filterTimeData()" ng-model="cInterface2.time['normal']" type="checkbox" name="" value="">de 16' a 60'</br>
-          <input ng-change="cInterface2.filterTimeData()" ng-model="cInterface2.time['long']" type="checkbox" name="" value="">Más de 1 hora</br>
-        </li>
-        <li>
-          <div class="">
-            <input type="text" name="" value="">Region
-            <button type="button" name="button"></button>
-          </div>
+        <li><a href="#">Tiempo<i class="icono2 fa fa-chevron-down" aria-hidden="true"></i></a>
+          <ul class="overflow">
+            <li><label for="filters-m"><input id="filters-m" ng-change="cInterface2.filterTimeData()" ng-model="cInterface2.time['express']" type="checkbox" name="" value="">hasta 15'</label></li>
+            <li><label for="filters-m"><input id="filters-m" ng-change="cInterface2.filterTimeData()" ng-model="cInterface2.time['normal']" type="checkbox" name="" value="">de 16' a 60'</label></li>
+            <li><label for="filters-m"><input id="filters-m" ng-change="cInterface2.filterTimeData()" ng-model="cInterface2.time['long']" type="checkbox" name="" value="">Más de 1 hora</label></li>
+          </ul>
         </li>
       </ul>
+    -->
     </div>
     <div ng-init="myUrl = ''">
       <ul class="container__food">
