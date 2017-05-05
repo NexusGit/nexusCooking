@@ -6,11 +6,16 @@
     <title>{{cInterface3.currentRecipe.name}}</title>
     <link rel="stylesheet" href="res/css/style3.css">
     <link rel="stylesheet" href="res/css/font-awesome.min.css">
+    <link rel = "stylesheet" href ="lib/jquery-ui/jquery-ui.min.css">
+    <link rel = "stylesheet" href ="lib/jquery-ui/jquery-ui.structure.min.css">
+    <link rel = "stylesheet" href ="lib/jquery-ui/jquery-ui.theme.min.css">
     <script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
     <script src="res/js/db-connection.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
     <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
     <script src="res/js/module-interface3.js"></script>
+    <script src="res/js/jquery.min.js"></script>
+    <script src ="lib/jquery-ui/jquery-ui.min.js"></script>
   </head>
   <body>
     <header>
@@ -71,7 +76,7 @@
           </ul>
           <br>
           <div class="number__ingredient">
-            <label for="more__less" class="icon-plus more__left" ng-click="cInterface3.moreAmount()"></label><input type="number" name="" id="more__less" value="" min="1" ng-model="cInterface3.amount"><label for="more__less" class="icon-minus less__right" ng-click="cInterface3.lessAmount()"></label><p class="position__plabel">Para cuantas personas?</p>
+            <label for="more__less" class="icon-plus more__left" ng-click="cInterface3.moreAmount()"></label><input type="number" name="" id="more__less2" value="" min="1" ng-model="cInterface3.amount"><label for="more__less" class="icon-minus less__right" ng-click="cInterface3.lessAmount()"></label><p class="position__plabel">Para cuantas personas?</p>
           </div>
       </section>
       <section>
