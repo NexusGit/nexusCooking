@@ -9,6 +9,15 @@ angular
         cInterface1.ingredientsAdded = new Object();
         cInterface1.isDisabled = true;
 
+        $('#ingredient').focus();
+        $('#ingredient').keyup(function (e) {
+            if ((e.keyCode === 13) && (cInterface1.checkExistance())) {
+                cInterface1.addIngredient();
+                $scope.$apply();
+                $('#ingredient').focus();
+            }
+        });
+
         // Ver los ingredientes que existen en la DB
         db.ref('db/ingredients/').orderByChild('name').once('value', function(snapshot){
             for (myIngredient in snapshot.val()){
@@ -23,9 +32,11 @@ angular
         cInterface1.checkExistance = function(){
             if (Object.values(cInterface1.ingredientsList).indexOf(cInterface1.newIngredient) > -1) {
                 cInterface1.isDisabled = false;
+                return true;
             }
             else{
                 cInterface1.isDisabled = true;
+                return false;
             }
         }
 
