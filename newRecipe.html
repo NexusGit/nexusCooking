@@ -16,9 +16,9 @@
                 For how many people:<input type="number" ng-model="cData.forHowMany" min="1"></br></br>
                 Difficulty:
                 <select ng-model="cData.difficulty_">
-                    <option value="1">Easy</option>
-                    <option value="2">Medium</option>
-                    <option value="3">Hard</option>
+                    <option value="facil">Facil</option>
+                    <option value="intermedio">Intermedio</option>
+                    <option value="dificil">Dificil</option>
                 </select>
                 Regions: 
                 <select ng-model="cData.regions_">
@@ -52,10 +52,10 @@
                 Image URL:<input type="file" id="file" name="file"></br></br>
                 Steps:</br><textarea rows="8" cols="40" ng-model="cData.steps_"></textarea></br></br>
                 <script src="res/js/upload-image.js"></script>
-                <input type="button" value="Add new recipe!" ng-click="cData.addRecipe()">
+                <input type="button" value="Add new recipe!" ng-click="cData.verifyImage()">
                 </br></br></br></br>Crear nuevo ingrediente:
                 <input type="text" ng-model="cData.ingredientName_">
-                <input type="button" value="Add new ingredient!" ng-click="cData.addNewIngredient()">
+                <input type="button" value="Add new ingredient!" ng-click="cData.addNewIngredient();">
             </div>
         </div>
     </body>
