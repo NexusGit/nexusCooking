@@ -128,18 +128,14 @@ header a {
 	background: #C62828;
 }
 
-#stockList {
-}
-
 #stockIng {
-	border-bottom: 2px solid rgba(183, 28, 28, 0.4);
+	border-bottom: 2px solid rgba(255, 255, 255, 0.8);
 	font-size: 22px;
 	width: 100%;
 	text-align: center;
 	display: flex;
 	justify-content: center;
 	margin: auto;
-	padding: 4px;
 	cursor: pointer;
 }
 
@@ -147,10 +143,8 @@ header a {
 	cursor: pointer;
 }
 
-
-
 #content {
-	background: rgba(14, 20, 14, 0.83);
+	background: rgba(0, 0, 0, 0.8);
 	color: #fff;
 	border-radius: 4px;
 	width: 96%;
@@ -161,6 +155,15 @@ header a {
 	max-height: 50%;
 	max-height: 50vh;
 	overflow-x: hidden;
+}
+
+.lemon {
+	color: #fff;
+	margin: auto;
+	margin-left: 15px;
+	position: relative;
+	float: left;
+	top: 27px;
 }
 
 #content ul li{

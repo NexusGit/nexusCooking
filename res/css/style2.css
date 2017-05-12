@@ -8,14 +8,22 @@
 }
 
 body {
+  background-image: url("https://cdn.pixabay.com/photo/2017/03/14/08/37/wood-2142309_960_720.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
   font-family: 'Mallanna', sans-serif;
-  background: #9E9E9E;
   margin-top: 80px;
 }
 
 .container {
   width: 98%;
   margin: auto;
+}
+
+.scroll-img {
+  height: 87vh;
+  overflow-x: hidden;
 }
 
 /*----------------------------Header----------------------------*/
@@ -120,69 +128,93 @@ ul li a p {
   background: #B71C1C;
   overflow: hidden;
 }
-/*-----------------------------------filters-menu-----------------------------------*/
+/*-----------------------------------Filters-menu-----------------------------------*/
 
-a {
-  text-decoration: none;
-  text-align: none;
+.btn-icono {
+  display: none;
 }
 
-ul li {
-  color: #fff;
-}
-
-.btn-menu {
-  width: 20%;
-  display: block;
-  padding: 5px;
-  color: #fff;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
-  border: 2px solid #fff;
-  text-align: center;
-  font-size: 23px;
-}
-
-.filter .btn-menu:hover {
-  background: #43A047;
-  border: none;
-}
-
-.icono1 {
-  margin-left: 7px;
-}
-
-.icono {
-  float: left;
-}
-
-.filter {
-  width: 20%;
-  min-width: 300px;
-  margin: 20px;
+.btn-arrow {
   position: fixed;
-  top: 3px;
+  top: 30px;
   left: 10px;
-  display: inline-block;
+  width: 30px;
+  padding: 2px;
+  color: #fff;
+  text-align: center;
+  font-size: 18px;
 }
 
-.filter .menu2 {
-  width: 100%
+.menu2 {
+  position: fixed;
+  top: 80px;
+  left: 0;
+  width: 50%;
+  transform: translateX(-100%);
+  transition: all 0.3s;
 }
 
-.filter ul li{
+.menu2 ul {
+  background: #43A047;
   list-style: none;
 }
 
-.filter .menu2 li a{
+.menu2 ul ul {
+  background: #2E7D32;
+  display: none;
+}
+
+.menu2 ul li label {
   color: #fff;
   display: block;
-  padding: 15px 20px;
+  padding: 10px;
+}
+
+.menu2 ul li label:hover {
+  color: #fff;
+  background: #B71C1C;
+}
+
+.menu2 ul .back-ing-nom label:hover {
+  background: none;
+}
+
+.menu2 .overflow li label:hover {
   background: #43A047;
 }
 
-.filter .menu2 li a:hover {
-  background: #000;
+.menu2 .overflow li label {
+  font-size: 19px;
+}
+
+.menu2 .overflow li label input {
+  margin-right: 7px;
+  margin-left: 7px;
+}
+
+.back-ing-nom label input {
+  border-radius: 4px;
+  border: none;
+}
+
+.btn-ingext {
+  margin-right: 5px;
+  border: none;
+  color: #fff;
+  background: #43A047;
+}
+
+.left-btn-ingext {
+  margin-right: 5px;
+}
+
+.icono2 {
+  position: absolute;
+  right: 8px;
+}
+
+#btn-menu:checked ~ .menu2 {
+  transform: translateX(0%);
 }
 
 .overflow {
@@ -192,37 +224,17 @@ ul li {
 	max-height: 40vh;
 }
 
-a{
-  color: #fff;
+.filter-overflow {
+  width: 60%;
+  margin-right: 5px;
 }
 
-.icono2 {
-  float: right;
-  margin-left: 10px;
+.fil {
+  width: 40px;
 }
 
-.check {
-  margin-right: 10px;
-}
-
-.filter .menu2 {
-  display: none;
-}
-.filter .menu2 ul {
-  display: none;
-}
-
-.filter .menu2 ul li a {
-  background: #aaa;
-  color: #fff;
-}
-
-.filter .menu2 ul li a:hover {
-  background: #000;
-}
-
-.filter .menu2 .actived > a {
-  background: #000;
+.activo {
+  background: #B71C1C;
 }
 
 
