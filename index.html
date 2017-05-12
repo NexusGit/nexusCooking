@@ -50,6 +50,7 @@
           <div id="stockList">
             <ul>
               <li class="stock__Ing" ng-repeat="(key, value) in cInterface1.ingredientsAdded">
+                <i class="lemon fa fa-lemon-o" aria-hidden="true"></i>
                 <span id="stockIng" ng-click="cInterface1.removeIngredient(key)">{{ value }}</span>
               </li>
             </ul>

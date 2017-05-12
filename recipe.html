@@ -4,12 +4,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{cInterface3.currentRecipe.name}}</title>
+    <link rel="stylesheet" href="res/css/bootstrap.min.css">
     <link rel="stylesheet" href="res/css/style3.css">
     <link rel="stylesheet" href="res/css/font-awesome.min.css">
     <link rel = "stylesheet" href ="lib/jquery-ui/jquery-ui.min.css">
     <link rel = "stylesheet" href ="lib/jquery-ui/jquery-ui.structure.min.css">
     <link rel = "stylesheet" href ="lib/jquery-ui/jquery-ui.theme.min.css">
     <script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
+    <script src="res/js/jquery.min.js"></script>
+    <script src="res/js/bootstrap.min.js"></script>
     <script src="res/js/db-connection.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
     <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
@@ -23,7 +26,7 @@
         <button class="icon-left-big" id="arrow" type="button" name="button" onclick="location.href='recipes.html'"></button>
         <h1>Que cocino?</h1>
         <input type="checkbox" id="menu-var2" name="" value="">
-        <label class="icon-align-justify-1" for="menu-var2"></label>
+        <label for="menu-var2"><i class="fa fa-bars" aria-hidden="true"></i></label>
         <nav class="menu">
           <a href="#">Inicio</a>
           <a href="#">Categorías</a>
@@ -36,23 +39,21 @@
     <br>
     <br>
     <br>
+
     <div class="container__recipes">
       <section>
         <div class="title__recipes">
           <h2>{{cInterface3.currentRecipe.name}}</h2>
           <br>
         </div>
-        <div class="ingredient__images">
-          <img src="{{cInterface3.currentRecipe.image}}" alt="">
-        </div>
         <div id="marquitooooos">
-          <p>Autor: {{cInterface3.currentAuthor}}</p>
-          <p>Categoria: {{cInterface3.currentCategory}}</p>
-          <p>Dificultad: {{cInterface3.currentDifficulty}}</p>
-          <p>Region: {{cInterface3.currentRegion}}</p>
-          <p>Subido el {{cInterface3.currentUploaded}}</p>
-          <p>Tiempo: {{cInterface3.currentTimeType}} - {{cInterface3.currentRecipe.time}} minutos</p>
-          <p>Vistas: {{cInterface3.currentRecipe.views}}</p>
+          <p><i class="iconos fa fa-user" aria-hidden="true"></i>Autor: {{cInterface3.currentAuthor}}</p>
+          <p><i class="iconos fa fa-cutlery" aria-hidden="true"></i>Categoria: {{cInterface3.currentCategory}}</p>
+          <p><i class="iconos fa fa-question" aria-hidden="true"></i>Dificultad: {{cInterface3.currentDifficulty}}</p>
+          <p><i class="iconos fa fa-globe" aria-hidden="true"></i>Region: {{cInterface3.currentRegion}}</p>
+          <p><i class="iconos fa fa-calendar-o" aria-hidden="true"></i>Subido el {{cInterface3.currentUploaded}}</p>
+          <p><i class="iconos fa fa-clock-o" aria-hidden="true"></i>Tiempo: {{cInterface3.currentTimeType}} - {{cInterface3.currentRecipe.time}} minutos</p>
+          <p><i class="iconos fa fa-eye" aria-hidden="true"></i>Vistas: {{cInterface3.currentRecipe.views}}</p>
         </div>
       </section>
       <section>
@@ -63,9 +64,9 @@
             <div ng-repeat="(key, value) in cInterface3.ingredientsList">
               <div class="container__circle">
                 <div class="circle">
-                  <div class="ingredient__circle side"> {{(value.amount * (cInterface3.amount / cInterface3.currentRecipe.forHowMany)).toFixed(1)}}
+                  <div class="ingredient__circle__1 side"> {{(value.amount * (cInterface3.amount / cInterface3.currentRecipe.forHowMany)).toFixed(1)}}
                   </div>
-                  <div class="ingredient__circle2 side"> {{(value.amount * (cInterface3.amount / cInterface3.currentRecipe.forHowMany)).toFixed(1)}}
+                  <div class="ingredient__circle2__1 side"> {{(value.amount * (cInterface3.amount / cInterface3.currentRecipe.forHowMany)).toFixed(1)}}
                   </div>
                 </div>
               </div>
@@ -76,7 +77,10 @@
           </ul>
           <br>
           <div class="number__ingredient">
-            <label for="more__less" class="icon-plus more__left" ng-click="cInterface3.moreAmount()"></label><input type="number" name="" id="more__less2" value="" min="1" ng-model="cInterface3.amount"><label for="more__less" class="icon-minus less__right" ng-click="cInterface3.lessAmount()"></label><p class="position__plabel">Para cuantas personas?</p>
+            <label for="more__less" class="more__left" ng-click="cInterface3.lessAmount()"><i class="fa fa-minus" aria-hidden="true" ng-click="cInterface3.lessAmount()"></i></label>
+            <input type="number" name="" id="more__less" value="" min="1" ng-model="cInterface3.amount">
+            <label for="more__less" class="less__right" ng-click="cInterface3.moreAmount()"><i class="fa fa-plus" aria-hidden="true" ng-click="cInterface3.moreAmount()"></i></label>
+            <p class="position__plabel">Para cuantas personas?</p>
           </div>
       </section>
       <section>
@@ -99,7 +103,12 @@
           </div>
         </div>
       </div>
+    </div>
       </section>
+    <div class="container__rigth">
+      <div class="ingredient__images">
+        <img src="{{cInterface3.currentRecipe.image}}" alt="">
+      </div>
     </div>
     <br>
   </body>
