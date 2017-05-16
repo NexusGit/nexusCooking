@@ -82,9 +82,9 @@
 
     <div class="scroll-img" ng-init="myUrl = ''">
       <ul class="container__food">
-          <li class="food__column" ng-repeat="recipe in cInterface2.allRecipes" ng-mouseup="myUrl = cInterface2.selectRecipe($index)">
+          <li class="food__column" ng-repeat="recipe in cInterface2.allRecipes" ng-mouseup="myUrl = cInterface2.selectRecipe($index)" style="background-image: url('{{recipe.image}}'), url('res/img/not-found.png');">
             <a href="{{myUrl}}">
-              <img src="{{recipe.image}}" alt="{{recipe.image}}">
+              <img class="transparency_img" src="res/img/size.png" alt="{{recipe.image}}">
               <p class="name__food">{{recipe.name}}</p>
             </a>
           </li>
