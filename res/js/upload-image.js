@@ -21,7 +21,7 @@ function handleFileSelect(evt){
             return;
         };
         img.src = window.URL.createObjectURL(file);
-        if (!(/\.(png|jpeg|jpg|gif)$/i).test(file.name)){
+        if (!(/\.(jpeg|jpg)$/i).test(file.name)){
             isPossible = false;
             alert("La extension no es valida");
         }
