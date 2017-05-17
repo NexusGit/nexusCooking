@@ -29,9 +29,6 @@
         <label for="menu-var2"><i class="fa fa-bars" aria-hidden="true"></i></label>
         <nav class="menu">
           <a href="#">Inicio</a>
-          <a href="#">Categorías</a>
-          <a href="#">Favoritos</a>
-          <a href="#">Contacto</a>
         </nav>
       </div>
     </header>
@@ -45,8 +42,15 @@
         <div class="title__recipes">
           <h2>{{cInterface3.currentRecipe.name}}</h2>
           <br>
+
+        <div class="ingredient__images1">
+          <div class="ingredient__images">
+            <img src="{{cInterface3.currentRecipe.image}}" alt="">
+          </div>
         </div>
-        <div id="marquitooooos">
+
+        </div>
+        <div class="categories-filter">
           <p><i class="iconos fa fa-user" aria-hidden="true"></i>Autor: {{cInterface3.currentAuthor}}</p>
           <p><i class="iconos fa fa-cutlery" aria-hidden="true"></i>Categoria: {{cInterface3.currentCategory}}</p>
           <p><i class="iconos fa fa-question" aria-hidden="true"></i>Dificultad: {{cInterface3.currentDifficulty}}</p>
@@ -55,6 +59,7 @@
           <p><i class="iconos fa fa-clock-o" aria-hidden="true"></i>Tiempo: {{cInterface3.currentTimeType}} - {{cInterface3.currentRecipe.time}} minutos</p>
           <p><i class="iconos fa fa-eye" aria-hidden="true"></i>Vistas: {{cInterface3.currentRecipe.views}}</p>
         </div>
+
       </section>
       <section>
         <div class="ingredient__recipes">
@@ -77,9 +82,9 @@
           </ul>
           <br>
           <div class="number__ingredient">
-            <label for="more__less" class="more__left" ng-click="cInterface3.lessAmount()"><i class="fa fa-minus" aria-hidden="true" ng-click="cInterface3.lessAmount()"></i></label>
+            <label for="more__less" class="more__left" ng-click="cInterface3.lessAmount()"><i class="minus-plus fa fa-minus" aria-hidden="true" ng-click="cInterface3.lessAmount()"></i></label>
             <input type="number" name="" id="more__less" value="" min="1" ng-model="cInterface3.amount">
-            <label for="more__less" class="less__right" ng-click="cInterface3.moreAmount()"><i class="fa fa-plus" aria-hidden="true" ng-click="cInterface3.moreAmount()"></i></label>
+            <label for="more__less" class="less__right" ng-click="cInterface3.moreAmount()"><i class="minus-plus fa fa-plus" aria-hidden="true" ng-click="cInterface3.moreAmount()"></i></label>
             <p class="position__plabel">Para cuantas personas?</p>
           </div>
       </section>
@@ -105,11 +110,7 @@
       </div>
     </div>
       </section>
-    <div class="container__rigth">
-      <div class="ingredient__images">
-        <img src="{{cInterface3.currentRecipe.image}}" alt="">
-      </div>
-    </div>
+
     <br>
   </body>
 </html>
