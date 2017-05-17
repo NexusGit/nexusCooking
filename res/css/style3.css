@@ -7,8 +7,15 @@
 	box-sizing: border-box;
 }
 
+html {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 body {
   font-family: 'Mallanna', sans-serif;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .container {
@@ -87,7 +94,6 @@ header label {
 
 /*----------------------------------Recipes----------------------------------*/
 
-
 .container__recipes {
   width: 98%;
   margin: auto;
@@ -139,8 +145,10 @@ h2 {
 
 .number__ingredient label {
   margin: auto;
+  text-align: center;
   font-size: 20px;
   width: 50px;
+  height: 46px;
   padding: 5px;
   background: #263238;
   color: #fff;
@@ -149,7 +157,7 @@ h2 {
 .position__plabel {
   position: relative;
   bottom: 30px;
-  left: 200px;
+  left: 180px;
 }
 
 .more__left {
@@ -160,6 +168,10 @@ h2 {
 .less__right {
   border-top-right-radius: 4px;
 	border-bottom-right-radius: 4px;
+}
+
+.minus-plus {
+  margin-top: 8px;
 }
 
 input[type=number]::-webkit-inner-spin-button,
@@ -176,6 +188,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .container__circle {
+  text-align: center;
   width: 50px;
   height: 50px;
   -webkit-perspective: 700;
@@ -202,8 +215,8 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .ingredient__circle__1 {
-  width: 100%;
-  height: 100%;
+  width: 80px;
+  height: 50px;
   padding: 9px;
   margin: auto;
   margin-right: 15px;
@@ -219,8 +232,8 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .ingredient__circle2__1 {
-  width: 100%;
-  height: 100%;
+  width: 63px;
+  height: 50px;
   padding: 9px;
   margin: auto;
   margin-right: 15px;
@@ -235,7 +248,6 @@ input[type=number]::-webkit-outer-spin-button {
   clear: both;
   transform: rotateY(180deg);
 }
-
 
 .ingredient__circle {
   width: 100%;
@@ -275,7 +287,7 @@ input[type=number]::-webkit-outer-spin-button {
 .position__li {
   position: relative;
   bottom: 50px;
-  left: 30px;
+  left: 60px;
 }
 
 .preparation p {
@@ -295,9 +307,8 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 @media (min-width:60px) {
-  #marquitooooos {
+  .categories-filter {
     margin-top: 15px;
-    top: -300px;
   }
 }
 
@@ -306,17 +317,20 @@ input[type=number]::-webkit-outer-spin-button {
     position: static;
     width: auto;
     height: 60px;
-    background: #43A047;
+    background: none;
     color: #fff;
     transform: translateX(0%);
     float: right;
     display: flex;
-    margin-top: -68px;
+    margin-top: -62px;
+    font-size: 18px;
   }
 
   .menu a:hover {
-    background: rgba(129, 199, 132, 0.7);
+    background: none;
+    color: #EF9A9A;
   }
+
   .menu a {
     border: none;
   }
@@ -326,22 +340,34 @@ input[type=number]::-webkit-outer-spin-button {
   }
 
   h1 {
-    margin-left: 0px;
+    margin-left: 0;
   }
 
   h2 {
     width: 40%;
   }
 
-  .container__recipes {
-    width: 49%;
-    margin: auto;
-    float: left;
-  }
-  .ingredient__images img {
-    width: 50%;
+  .ingredient__images1 img {
     position: relative;
+  }
+
+  .ingredient__images img {
+    border-bottom: 1px solid #B71C1C;
+    width: 43%;
+    max-width: 650px;
+    max-height: 650px;
+    position: absolute;
+    top: 0;
     left: 50%;
+  }
+
+  .ingredient__recipes {
+    margin-top: 180px;
+  }
+
+  .categories-filter {
+    margin-top: 150px;
+    margin-bottom: -100px;
   }
 
   .title__recipes {
@@ -352,7 +378,7 @@ input[type=number]::-webkit-outer-spin-button {
   .position__li {
     position: relative;
     bottom: 50px;
-    left: 30px;
+    left: 60px;
   }
 
   .position__p {
@@ -363,22 +389,5 @@ input[type=number]::-webkit-outer-spin-button {
 
   .title__recipes p {
     width: 40%;
-  }
-
-  #marquitooooos {
-    float: left;
-    position: relative;
-    top: -400px;
-  }
-
-  .container__rigth {
-    width: 49%;
-    float: right;
-  }
-
-  .position__plabel {
-    position: relative;
-    bottom: 30px;
-    left: 370px;
   }
 }

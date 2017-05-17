@@ -170,6 +170,7 @@ ul li a p {
   width: 50%;
   transform: translateX(-100%);
   transition: all 0.3s;
+  z-index: 2000;
 }
 
 .menu2 ul {
@@ -202,7 +203,7 @@ ul li a p {
 }
 
 .menu2 .overflow li label {
-  font-size: 19px;
+  font-size: 18px;
 }
 
 .menu2 .overflow li label input {
