@@ -7,7 +7,7 @@ angular
         cInterface2.object = $firebaseObject(ref);
         cInterface2.allRecipes = new Object();
         cInterface2.allRecipesAux = new Object();
-        cInterface2.extraIngredientsAllowed = 0;
+        cInterface2.extraIngredientsAllowed = 6;
         cInterface2.myData = JSON.parse(localStorage.getItem("myData"));
         cInterface2.category = new Object();
         cInterface2.category = {arroces:false, bebidascocteles:false, carnes:false, creamaspuressopas:false, ensaladas:false, legumbres:false, pastas:false, pescadosmariscos:false, postres:false, salsasbases:false, verduras:false, otros:false};
