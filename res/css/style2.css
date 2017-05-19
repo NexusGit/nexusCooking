@@ -168,6 +168,9 @@ ul li a p {
   transform: translateX(-100%);
   transition: all 0.3s;
   z-index: 2000;
+  overflow-x: hidden;
+  max-height: 80%;
+  max-height: 80vh;
 }
 
 .menu2 ul {
@@ -183,7 +186,7 @@ ul li a p {
 .menu2 ul li label {
   color: #fff;
   display: block;
-  padding: 10px;
+  padding: 15px;
 }
 
 .menu2 ul li label:hover {
@@ -200,7 +203,7 @@ ul li a p {
 }
 
 .menu2 .overflow li label {
-  font-size: 18px;
+  font-size: 15px;
 }
 
 .menu2 .overflow li label input {
@@ -214,11 +217,12 @@ ul li a p {
 }
 
 .btn-ingext {
-  font-size: 16px;
+  font-size: 17px;
   margin-right: 5px;
   border: none;
   color: #fff;
   background: #43A047;
+  vertical-align: middle;
 }
 
 .left-btn-ingext {
@@ -243,12 +247,25 @@ ul li a p {
 }
 
 .filter-overflow {
-  width: 60%;
   margin-right: 5px;
 }
 
 .fil {
   width: 40px;
+  height: 25px;
+  text-align: center;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.fil-name {
+  width: 60%;
+  font-size: 15px;
+  height: 25px;
 }
 
 .activo {
@@ -282,6 +299,15 @@ ul li a p {
   .filter {
     left: 0px;
   }
+
+  .menu2 ul li label {
+    padding: 28px;
+  }
+
+  .fil-name {
+    width: 100%;
+  }
+
 }
 
 @media (min-width:480px) {
@@ -300,6 +326,10 @@ ul li a p {
 @media (min-width:768px) {
   .food__column {
     width: 30%;
+  }
+
+  .fil-name {
+    width: 80%;
   }
 }
 
@@ -338,5 +368,13 @@ ul li a p {
     overflow-x: hidden;
     max-height: 40%;
   	max-height: 40vh;
+  }
+
+  .menu2 ul li label {
+    padding: 15px;
+  }
+
+  .fil-name {
+    width: 60%;
   }
 }
