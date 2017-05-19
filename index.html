@@ -30,7 +30,7 @@
         <div id="searcher">
           <div class="seeker">
             <input type="text" placeholder="Ingredientes" id="ingredient" list="ingredList" ng-model="cInterface1.newIngredient" ng-change="cInterface1.checkExistance()">
-            <button id="addButton" ng-click="cInterface1.addIngredient()" ng-disabled="cInterface1.isDisabled"><i class="fa fa-search" aria-hidden="true"></i></button>
+            <button id="addButton" ng-click="cInterface1.addIngredient()" ng-disabled="cInterface1.isDisabled"><i class="fa fa-plus" aria-hidden="true"></i></button>
           </div>
           <datalist id="ingredList">
               <option ng-repeat ="(key, value) in cInterface1.ingredientsList" value="{{value}}" ng-selected="selected"></option>
