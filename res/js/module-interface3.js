@@ -17,32 +17,36 @@ angular
         cInterface3.currentAuthor = "";
 
         // Ver los ingredientes que existen en la DB
-        db.ref('db/recipes/' + $location.hash() + '/ingredients').once('value', function(snapshot){
-            for (myIngredient in snapshot.val()){
-                db.ref('db/recipes/' + $location.hash() + '/ingredients/' + myIngredient + '/').once('value', function(snapshot){
-                    cInterface3.ingredientsList[snapshot.key] = {
-                        amount:snapshot.val().amount,
-                        name:snapshot.val().name,
-                        unit:snapshot.val().unit
-                    }
-                })
-            }
-        })
+        if ($location.hash().length > 0){
+            db.ref('db/recipes/' + $location.hash() + '/ingredients').once('value', function(snapshot){
+                for (myIngredient in snapshot.val()){
+                    db.ref('db/recipes/' + $location.hash() + '/ingredients/' + myIngredient + '/').once('value', function(snapshot){
+                        cInterface3.ingredientsList[snapshot.key] = {
+                            amount:snapshot.val().amount,
+                            name:snapshot.val().name,
+                            unit:snapshot.val().unit
+                        }
+                    })
+                }
+            })
+        }
 
         // Trae la receta actual
-        db.ref('db/recipes/' + $location.hash()).once('value', function(snapshot){
-            cInterface3.currentRecipe = snapshot.val();
-            for(myStep in cInterface3.currentRecipe.steps){
-                cInterface3.stepsList[myStep] = cInterface3.currentRecipe.steps[myStep];
-            }
-            cInterface3.addView();
-            cInterface3.currentTimeType = Object.keys(cInterface3.currentRecipe.timeType)[0].charAt(0).toUpperCase() + Object.keys(cInterface3.currentRecipe.timeType)[0].slice(1);
-            cInterface3.currentRegion = Object.keys(cInterface3.currentRecipe.region)[0].charAt(0).toUpperCase() + Object.keys(cInterface3.currentRecipe.region)[0].slice(1);
-            cInterface3.currentDifficulty = Object.keys(cInterface3.currentRecipe.difficulty)[0].charAt(0).toUpperCase() + Object.keys(cInterface3.currentRecipe.difficulty)[0].slice(1);
-            cInterface3.currentCategory = Object.keys(cInterface3.currentRecipe.category)[0].charAt(0).toUpperCase() + Object.keys(cInterface3.currentRecipe.category)[0].slice(1);
-            cInterface3.currentAuthor = Object.keys(cInterface3.currentRecipe.author)[0].charAt(0).toUpperCase() + Object.keys(cInterface3.currentRecipe.author)[0].slice(1);
-            cInterface3.currentUploaded = "" + new Date(cInterface3.currentRecipe.date).getDay() + "/" + new Date(cInterface3.currentRecipe.date).getMonth() + "/" + new Date(cInterface3.currentRecipe.date).getFullYear();
-        })
+        if ($location.hash().length > 0){
+            db.ref('db/recipes/' + $location.hash()).once('value', function(snapshot){
+                cInterface3.currentRecipe = snapshot.val();
+                for(myStep in cInterface3.currentRecipe.steps){
+                    cInterface3.stepsList[myStep] = cInterface3.currentRecipe.steps[myStep];
+                }
+                cInterface3.addView();
+                cInterface3.currentTimeType = Object.keys(cInterface3.currentRecipe.timeType)[0].charAt(0).toUpperCase() + Object.keys(cInterface3.currentRecipe.timeType)[0].slice(1);
+                cInterface3.currentRegion = Object.keys(cInterface3.currentRecipe.region)[0].charAt(0).toUpperCase() + Object.keys(cInterface3.currentRecipe.region)[0].slice(1);
+                cInterface3.currentDifficulty = Object.keys(cInterface3.currentRecipe.difficulty)[0].charAt(0).toUpperCase() + Object.keys(cInterface3.currentRecipe.difficulty)[0].slice(1);
+                cInterface3.currentCategory = Object.keys(cInterface3.currentRecipe.category)[0].charAt(0).toUpperCase() + Object.keys(cInterface3.currentRecipe.category)[0].slice(1);
+                cInterface3.currentAuthor = Object.keys(cInterface3.currentRecipe.author)[0].charAt(0).toUpperCase() + Object.keys(cInterface3.currentRecipe.author)[0].slice(1);
+                cInterface3.currentUploaded = "" + new Date(cInterface3.currentRecipe.date).getDay() + "/" + new Date(cInterface3.currentRecipe.date).getMonth() + "/" + new Date(cInterface3.currentRecipe.date).getFullYear();
+            })
+        }
 
         // Separa los pasos de las recetas para visualizarlos correctamente.
         cInterface3.setRecipes = function(snapshot){
@@ -57,7 +61,9 @@ angular
             return db.ref('db/recipes/' + $location.hash()).once('value').then(cInterface3.setRecipes);
         }
 
-        cInterface3.getRecipe();
+        if ($location.hash().length > 0){
+            cInterface3.getRecipe();
+        }
 
         // Less amount
         cInterface3.lessAmount = function(){

@@ -17,6 +17,9 @@ angular
         cData.categoriesList = new Object();
         cData.ingredientName_="";
         localStorage.setItem('currentURLimg', 'https://images-na.ssl-images-amazon.com/images/I/31XrGujYNTL.jpg');
+        cData.generatedKey;
+        cData.recipeId = "";
+        cData.currentRecipe = new Object();
 
         // Ver las regiones que existen en la DB
         db.ref('db/regions/').once('value', function(snapshot){
@@ -84,9 +87,9 @@ angular
 
         // Sube la imagen y llama a agregar la receta
         cData.uploadImage = function(){
-            var generatedKey = db.ref('db/').child('imagesKeys').push().key;
+            cData.generatedKey = db.ref('db/').child('imagesKeys').push().key;
             try{
-                storageRef.child('stg/recipes/images/' + generatedKey + '/' + file.name).put(file, metadata).then(function(snapshot) {
+                storageRef.child('stg/recipes/images/' + cData.generatedKey + '/' + file.name).put(file, metadata).then(function(snapshot) {
                     localStorage.setItem('currentURLimg', snapshot.downloadURL);
                     cData.addRecipe();
                 }).catch(function(error) {
@@ -135,7 +138,7 @@ angular
                 },
                 forHowMany:cData.forHowMany
             };
-            var newRecipeKey = db.ref('db/').child('recipes').push().key;
+            var newRecipeKey = cData.generatedKey;
             db.ref('db/recipes/' + newRecipeKey).update(newRecipe);
 
             db.ref('db/names/').update({[cData.name_]:true})
@@ -153,6 +156,22 @@ angular
             }
             localStorage.setItem('currentURLimg', 'https://images-na.ssl-images-amazon.com/images/I/31XrGujYNTL.jpg');
             return true
+        }
+
+        // Borra la receta indicada en la base de datos y tambien elimina la imagen correspondiente
+        cData.deleteRecipe = function(){
+            db.ref('db/recipes/' + cData.recipeId).once('value').then(function(snapshot){
+                cData.currentRecipe = snapshot.val();
+                cData.currentTimeType = Object.keys(cData.currentRecipe.timeType)[0]
+                cData.currentRegion = Object.keys(cData.currentRecipe.region)[0]
+                cData.currentDifficulty = Object.keys(cData.currentRecipe.difficulty)[0]
+                cData.currentCategory = Object.keys(cData.currentRecipe.category)[0]
+                db.ref('db/timeTypes/' + cData.currentTimeType + '/recipes').update({[cData.recipeId]:null})
+                db.ref('db/regions/' + cData.currentRegion + '/recipes').update({[cData.recipeId]:null})
+                db.ref('db/difficulties/' + cData.currentDifficulty + '/recipes').update({[cData.recipeId]:null})
+                db.ref('db/categories/' + cData.currentCategory + '/recipes').update({[cData.recipeId]:null})
+                db.ref('db/recipes').update({[cData.recipeId]:null});
+            })
         }
 
         // Agrega un nuevo ingrediente

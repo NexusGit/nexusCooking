@@ -4,7 +4,6 @@ var isPossible;
 
 // Sube un fichero al stg de FB
 function handleFileSelect(evt){
-    // FALTA VERIFICAR EL TIPO DE DATO QUE SEA IMAGEN Y LAS DIMENSIONES QUE SEAN 700X700
     try{
         isPossible = true;
         file = evt.target.files[0];
@@ -13,6 +12,7 @@ function handleFileSelect(evt){
             isPossible = false;
         }
         img = new Image();
+/*
         img.onload = function () {
             if (!((this.width == this.height) && (this.width > 500))){
                 isPossible = false;
@@ -20,6 +20,7 @@ function handleFileSelect(evt){
             }
             return;
         };
+*/
         img.src = window.URL.createObjectURL(file);
         if (!(/\.(jpeg|jpg)$/i).test(file.name)){
             isPossible = false;
