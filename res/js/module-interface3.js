@@ -44,7 +44,7 @@ angular
                 cInterface3.currentDifficulty = Object.keys(cInterface3.currentRecipe.difficulty)[0].charAt(0).toUpperCase() + Object.keys(cInterface3.currentRecipe.difficulty)[0].slice(1);
                 cInterface3.currentCategory = Object.keys(cInterface3.currentRecipe.category)[0].charAt(0).toUpperCase() + Object.keys(cInterface3.currentRecipe.category)[0].slice(1);
                 cInterface3.currentAuthor = Object.keys(cInterface3.currentRecipe.author)[0].charAt(0).toUpperCase() + Object.keys(cInterface3.currentRecipe.author)[0].slice(1);
-                cInterface3.currentUploaded = "" + new Date(cInterface3.currentRecipe.date).getDay() + "/" + new Date(cInterface3.currentRecipe.date).getMonth() + "/" + new Date(cInterface3.currentRecipe.date).getFullYear();
+                cInterface3.currentUploaded = "" + new Date(cInterface3.currentRecipe.date).getDate() + "/" + (new Date(cInterface3.currentRecipe.date).getMonth() + 1) + "/" + new Date(cInterface3.currentRecipe.date).getFullYear();
             })
         }
 
