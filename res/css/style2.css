@@ -1,6 +1,3 @@
-@import url('https://fonts.googleapis.com/css?family=Mallanna');
-@import url('https://fonts.googleapis.com/css?family=Lobster');
-
 * {
   margin: 0;
   padding: 0;
@@ -12,7 +9,7 @@ body {
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-  font-family: 'Mallanna', sans-serif;
+  font-family: 'Mandali', sans-serif;
   margin-top: 80px;
 }
 
@@ -125,7 +122,6 @@ ul li a p {
 }
 
 .container__food {
-  /*overflow: hidden;*/
   padding: 20px;
   display: flex;
   flex-wrap: wrap;
@@ -164,6 +160,7 @@ ul li a p {
 }
 
 .menu2 {
+  font-size: 17px;
   position: fixed;
   top: 80px;
   left: 0;
@@ -217,6 +214,7 @@ ul li a p {
 }
 
 .btn-ingext {
+  font-size: 16px;
   margin-right: 5px;
   border: none;
   color: #fff;
@@ -230,6 +228,7 @@ ul li a p {
 .icono2 {
   position: absolute;
   right: 8px;
+  margin-top: 5px;
 }
 
 #btn-menu:checked ~ .menu2 {
@@ -315,10 +314,12 @@ ul li a p {
     float: right;
     display: flex;
     margin-top: -55px;
+    font-size: 18px;
   }
 
   .menu a:hover {
-    background: rgba(129, 199, 132, 0.7);
+    background: none;
+    color: #EF9A9A;
   }
   .menu a {
     border: none;
