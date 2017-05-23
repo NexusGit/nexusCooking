@@ -128,7 +128,7 @@ img {
   margin: auto;
   margin-left: 30px;
   margin-top: 30px;
-  line-height: 40px;
+  line-height: 20px; /*Tenia 40*/
   list-style: none;
 }
 
@@ -195,7 +195,16 @@ input[type=number]::-webkit-outer-spin-button {
   margin-top: 10px;
 }
 
-.container__circle {
+.container__circle1 {
+  font-size: 18px;
+  text-align: center;
+  width: 80px; /*Era 50 marcos HDP XDDDD esto era lo que hacia que gire deforme*/
+  height: 50px;
+  -webkit-perspective: 700;
+  -moz-perspective: 700;
+}
+
+.container__circle2 {/*Tuve que copiar y pegar para que sean distintos*/
   font-size: 18px;
   text-align: center;
   width: 50px;
@@ -213,7 +222,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .circle:hover {
-  transform: rotateY(180deg);
+  transform: rotateY(-180deg);
 }
 
 .side {
@@ -228,8 +237,8 @@ input[type=number]::-webkit-outer-spin-button {
   height: 50px;
   padding: 10px;
   margin: auto;
-  margin-right: 15px;
-  margin-top: 15px;
+  margin-right: 0px; /*Tenia 15*/
+  margin-top: 0px; /*Tenia 15*/
   background: #263238;
   color: #fff;
   text-align: center;
@@ -241,12 +250,12 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .ingredient__circle2__1 {
-  width: 63px;
+  width: 80px;/*Tenia 63*/
   height: 50px;
   padding: 10px;
   margin: auto;
-  margin-right: 15px;
-  margin-top: 15px;
+  margin-right: 0px; /*Tenia 15*/
+  margin-top: 0px; /*Tenia 15*/
   background: #004D40;
   color: #fff;
   text-align: center;
@@ -306,7 +315,7 @@ input[type=number]::-webkit-outer-spin-button {
   margin: auto;
   margin-left: 30px;
   margin-top: 30px;
-  line-height: 40px;
+  line-height: 20px; /*Tenia 40*/
 }
 
 .iconos {
