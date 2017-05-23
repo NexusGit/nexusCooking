@@ -28,21 +28,19 @@
         </nav>
       </div>
     </header>
-
     <input type="checkbox" class="btn-icono" id="btn-menu" name="" value="">
-    <label class="btn-arrow" for="btn-menu"><i class="fa fa-chevron-down" aria-hidden="true"></i></label>
+    <label onclick="myArrowFilter()" class="btn-arrow" for="btn-menu"><i id="rotateIco" class="derotateIco fa fa-chevron-down" aria-hidden="true"></i></label>
     <div class="menu2">
       <ul>
         <li class="back-ing-nom">
-          <label>
+          <label for="">
+            <p>Ingredientes extras</p>
             <button class="btn-ingext" ng-click="cInterface2.substractExtraIngredientsAllowed()"><i class="fa fa-minus" aria-hidden="true"></i></button>
             <input class="fil filter-overflow" type="number" min="0" name="" value="" ng-model="cInterface2.extraIngredientsAllowed">
-            <button class="btn-ingext left-btn-ingext" ng-click="cInterface2.addExtraIngredientsAllowed()"><i class="fa fa-plus" aria-hidden="true"></i></button>Ingredientes extras
+            <button class="btn-ingext left-btn-ingext" ng-click="cInterface2.addExtraIngredientsAllowed()"><i class="fa fa-plus" aria-hidden="true"></i></button>
           </label>
         </li>
-
-        <li class="back-ing-nom"><label><input class="fil-name filter-overflow" ng-change="cInterface2.chooseInitializer();" type="text" name="" value="" ng-model="cInterface2.nameFilter">Nombre</li></label>
-
+        <li class="back-ing-nom"><label><input class="fil-name filter-overflow" placeholder="Nombre..." ng-change="cInterface2.chooseInitializer();" type="text" name="" value="" ng-model="cInterface2.nameFilter"></li></label>
         <li id="cats-activo" onclick="cats()" class="sub-menu"><label for="">Categorias <i class="icono2 fa fa-chevron-down" aria-hidden="true"></i></label></li>
         <ul id="cats" class="overflow">
             <li><label for="filters-arroces"><input id="filters-arroces" ng-change="cInterface2.filterCategoryData()" ng-model="cInterface2.category['arroces']" type="checkbox" name="" value="">Arroces</label></li>
@@ -58,26 +56,20 @@
             <li><label for="filters-verduras"><input id="filters-verduras" ng-change="cInterface2.filterCategoryData()" ng-model="cInterface2.category['verduras']" type="checkbox" name="" value="">Verduras</label></li>
             <li><label for="filters-otros"><input id="filters-otros" ng-change="cInterface2.filterCategoryData()" ng-model="cInterface2.category['otros']" type="checkbox" name="" value="">Otros</label></li>
         </ul>
-
-
         <li id="dif-activo" onclick="dif()" class="sub-menu"><label for="">Dificultad <i class="icono2 fa fa-chevron-down" aria-hidden="true"></i></label></li>
         <ul id="dif" class="overflow">
             <li><label for="filters-facil"><input id="filters-facil" ng-change="cInterface2.filterDifficultyData()" ng-model="cInterface2.difficulty['facil']" type="checkbox" name="" value="">Facil</label></li>
             <li><label for="filters-intermedio"><input id="filters-intermedio" ng-change="cInterface2.filterDifficultyData()" ng-model="cInterface2.difficulty['intermedio']" type="checkbox" name="" value="">Intermedio</label></li>
             <li><label for="filters-dificil"><input id="filters-dificil" ng-change="cInterface2.filterDifficultyData()" ng-model="cInterface2.difficulty['dificil']" type="checkbox" name="" value="">Dificil</label></li>
         </ul>
-
-
         <li id="tim-activo" onclick="tim()" class="sub-menu"><label for="">Tiempo <i class="icono2 fa fa-chevron-down" aria-hidden="true"></i></label></li>
         <ul id="tim" class="overflow">
             <li><label for="filters-express"><input id="filters-express" ng-change="cInterface2.filterTimeData()" ng-model="cInterface2.time['express']" type="checkbox" name="" value="">hasta 15'</label></li>
             <li><label for="filters-normal"><input id="filters-normal" ng-change="cInterface2.filterTimeData()" ng-model="cInterface2.time['normal']" type="checkbox" name="" value="">de 16' a 60'</label></li>
             <li><label for="filters-long"><input id="filters-long" ng-change="cInterface2.filterTimeData()" ng-model="cInterface2.time['long']" type="checkbox" name="" value="">Más de 1 hora</label></li>
         </ul>
-
       </ul>
     </div>
-
     <div class="scroll-img" ng-init="myUrl = ''">
       <ul class="container__food">
           <li class="food__column" ng-repeat="recipe in cInterface2.allRecipes" ng-mouseup="myUrl = cInterface2.selectRecipe($index)" style="background-image: url('{{recipe.image}}'), url('res/img/not-found.png');">
