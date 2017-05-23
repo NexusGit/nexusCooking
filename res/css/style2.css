@@ -122,7 +122,7 @@ ul li a p {
 }
 
 .container__food {
-  padding: 20px;
+  padding: 20px; /*Esta esta al pedo xq siempre la pisan*/
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -148,6 +148,24 @@ ul li a p {
   display: none;
 }
 
+.derotateIco {
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+  transition: all .5s
+}
+
+.rotateIco {
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  transition: all .5s
+}
+
 .btn-arrow {
   position: fixed;
   top: 30px;
@@ -166,7 +184,7 @@ ul li a p {
   left: 0;
   width: 50%;
   transform: translateX(-100%);
-  transition: all 0.3s;
+  transition: all 0.5s;
   z-index: 2000;
   overflow-x: hidden;
   max-height: 80%;
@@ -186,7 +204,7 @@ ul li a p {
 .menu2 ul li label {
   color: #fff;
   display: block;
-  padding: 15px;
+  padding: 4px;/*era 15*/
 }
 
 .menu2 ul li label:hover {
@@ -256,10 +274,9 @@ ul li a p {
   text-align: center;
 }
 
-input[type='number']::-webkit-inner-spin-button,
-input[type='number']::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+input[type='number']::-webkit-inner-spin-button, input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .fil-name {
@@ -301,7 +318,7 @@ input[type='number']::-webkit-outer-spin-button {
   }
 
   .menu2 ul li label {
-    padding: 28px;
+    /*padding: 28px; era 28*/
   }
 
   .fil-name {
@@ -371,7 +388,7 @@ input[type='number']::-webkit-outer-spin-button {
   }
 
   .menu2 ul li label {
-    padding: 15px;
+    /*padding: 15px;*/
   }
 
   .fil-name {
