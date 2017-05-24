@@ -91,6 +91,10 @@ header label {
 
 /*----------------------------------Recipes----------------------------------*/
 
+.ingredients__div {
+  margin-top: -35px;
+}
+
 .container__recipes {
   width: 98%;
   margin: auto;
@@ -130,6 +134,7 @@ img {
   margin-top: 30px;
   line-height: 20px; /*Tenia 40*/
   list-style: none;
+  margin-right: 60px;
 }
 
 .number__ingredient {
@@ -164,8 +169,8 @@ img {
 .position__plabel {
   font-size: 18px;
   position: relative;
-  bottom: 30px;
-  left: 180px;
+  bottom: 15px; /*Era 30*/
+  left: 0px; /*Era 180*/
 }
 
 .more__left {
@@ -188,11 +193,6 @@ input[type=number]::-webkit-outer-spin-button {
     -moz-appearance: none;
     appearance: none;
     margin: 0;
-}
-
-.preparation p {
-  margin-left: 30px;
-  margin-top: 10px;
 }
 
 .container__circle1 {
@@ -307,15 +307,20 @@ input[type=number]::-webkit-outer-spin-button {
   position: relative;
   bottom: 50px;
   left: 60px;
-
 }
 
 .preparation p {
   font-size: 18px;
   margin: auto;
-  margin-left: 30px;
+  margin-left: 60px;
   margin-top: 30px;
   line-height: 20px; /*Tenia 40*/
+}
+
+.position__p {
+  position: relative;
+  bottom: 50px;
+  left: 0px;
 }
 
 .iconos {
@@ -404,7 +409,7 @@ input[type=number]::-webkit-outer-spin-button {
   .position__p {
     position: relative;
     bottom: 50px;
-    left: 30px;
+    left: 0px;
   }
 
   .title__recipes p {
