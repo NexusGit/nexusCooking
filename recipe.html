@@ -65,7 +65,7 @@
           <h2>Ingredientes</h2>
           <ul>
             <br>
-            <div ng-repeat="(key, value) in cInterface3.ingredientsList">
+            <div class="ingredients__div" ng-repeat="(key, value) in cInterface3.ingredientsList">
               <div class="container__circle1">
                 <div class="circle">
                   <div class="ingredient__circle__1 side"> {{(value.amount * (cInterface3.amount / cInterface3.currentRecipe.forHowMany)).toFixed(1)}}
@@ -81,10 +81,10 @@
           </ul>
           <br>
           <div class="number__ingredient">
+            <p class="position__plabel">Para cuantas personas?</p>
             <label for="more__less" class="more__left" ng-click="cInterface3.lessAmount()"><i class="minus-plus fa fa-minus" aria-hidden="true"></i></label>
             <input type="number" name="" id="more__less" value="" min="1" ng-model="cInterface3.amount">
             <label for="more__less" class="less__right" ng-click="cInterface3.moreAmount()"><i class="minus-plus fa fa-plus" aria-hidden="true"></i></label>
-            <p class="position__plabel">Para cuantas personas?</p>
           </div>
       </section>
       <section>
@@ -92,7 +92,7 @@
         <div class="preparation">
           <h2>Preparacion</h2>
           <br>
-          <div ng-repeat="(key, value) in cInterface3.stepsList">
+          <div class="ingredients__div" ng-repeat="(key, value) in cInterface3.stepsList">
             <div class="container__circle2">
               <div class="circle">
                 <div class="ingredient__circle side">{{key}}
@@ -101,7 +101,7 @@
                 </div>
               </div>
             </div>
-            <div>
+            <div class="div__p">
               <p class="position__p">{{value}}</p>
             </div>
           </div>
